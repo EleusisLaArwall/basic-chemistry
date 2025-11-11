@@ -1,0 +1,35 @@
+Credits
+
+This file specifies assets used in Basic Chemistry from other sources.
+
+---------------------------------------------------------------------------------------------------
+
+Entity, icon and animation for:
+- chemical reactor
+- natural gas
+- petroleum gas
+- advanced oil processing
+
+Creators: [Wube Software](https://www.factorio.com/)
+Source: [factorio_0.16.51](https://www.factorio.com/)
+License: [Wube's EULA](https://www.factorio.com/terms-of-service)
+Changes: Yes. Graphics combined, recolored, resized and rearranged.
+
+---------------------------------------------------------------------------------------------------
+
+Icon for:
+- syngas
+- synthetic plate
+- synthetic scrap
+
+Creators: [malcolmriley](https://github.com/malcolmriley)
+Source: [Unused Renders](https://github.com/malcolmriley/unused-renders)
+License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Changes: Yes. Icon combined, recolored, resized and rearranged.
+
+---------------------------------------------------------------------------------------------------
+
+My personal thanks to:
+- the entire Wube team for this wonderful game called Factorio.
+- Malcolm Riley for generously allowing others to use these great assets.
+- Snouz for the centralized graphics catalog, that made my life much easier (https://github.com/snouz/factorio_free_graphics_for_modders).

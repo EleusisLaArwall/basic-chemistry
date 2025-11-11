@@ -1,0 +1,17 @@
+{
+	"name": "basic-chemistry",
+	"version": "0.1.0",
+	"title": "Basic Chemistry",
+	"author": "EleusisLaArwall",
+	"homepage": "",
+	"description": "Adds a basic chemical production chain for a crude plastic from coal to the early game and onwards.",
+	"factorio_version": "2.0",
+	"dependencies": [
+		"base >= 1.0",
+		"? space-age",
+		"? aai-industry",
+		"? crushing-industry",
+		"? scrap-industry"
+	]
+}
+
