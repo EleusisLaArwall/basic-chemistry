@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 13. 11. 2025
+  Bugfixes:
+    - Fixed AAI and Crushing Industry glass recipes.
+    - Fixed locale Description for "More Glass".
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 10. 11. 2025
   Major Features:
