@@ -23,22 +23,22 @@ if settings.startup["bc-aai-remove-stone-tablet"].value then
 end
 
 -- Chemical reactor is ingredient of chemical plant (require previous tier)
-table.insert(data.raw.recipe["chemical-plant"].ingredients, {type="item", name="bc-chemical-reactor", amount=1})
+util.replace_or_add_ingredient(data.raw.recipe["chemical-plant"], "bc-chemical-reactor", "bc-chemical-reactor", 1)
 -- Synthetic plate is ingredient of small iron pole instead of medium pole
-table.insert(data.raw["recipe"]["small-iron-electric-pole"].ingredients, {type="item", name="bc-synthetic-plate", amount=1})
+util.replace_or_add_ingredient(data.raw.recipe["small-iron-electric-pole"], "bc-synthetic-plate", "bc-synthetic-plate", 1)
 -- Synthetic plate is ingredient of repair pack
-table.insert(data.raw["recipe"]["repair-pack"].ingredients, {type="item", name="bc-synthetic-plate", amount=3})
+util.replace_or_add_ingredient(data.raw.recipe["repair-pack"], "bc-synthetic-plate", "bc-synthetic-plate", 3)
 -- Synthetic plate is ingredient of small electric motor
-table.insert(data.raw["recipe"]["electric-motor"].ingredients, {type="item", name="bc-synthetic-plate", amount=1})
+util.replace_or_add_ingredient(data.raw.recipe["electric-motor"], "bc-synthetic-plate", "bc-synthetic-plate", 1)
 -- If "more glass usage" is enabled, advanced circuit (red) requires glass. Also train-stuff, car and display require glass
 if settings.startup["bc-aai-more-glass-usage"].value then
-	table.insert(data.raw["recipe"]["advanced-circuit"].ingredients, {type="item", name="glass", amount=1})
-	table.insert(data.raw["recipe"]["train-stop"].ingredients, {type="item", name="glass", amount=2})
-	table.insert(data.raw["recipe"]["rail-signal"].ingredients, {type="item", name="glass", amount=1})
-	table.insert(data.raw["recipe"]["rail-chain-signal"].ingredients, {type="item", name="glass", amount=1})
-	table.insert(data.raw["recipe"]["locomotive"].ingredients, {type="item", name="glass", amount=5})
-	table.insert(data.raw["recipe"]["car"].ingredients, {type="item", name="glass", amount=5})
-	table.insert(data.raw["recipe"]["display-panel"].ingredients, {type="item", name="glass",amount=1})
+	util.replace_or_add_ingredient(data.raw.recipe["advanced-circuit"], "glass", "glass", 1)
+	util.replace_or_add_ingredient(data.raw.recipe["train-stop"], "glass", "glass", 2)
+	util.replace_or_add_ingredient(data.raw.recipe["rail-signal"], "glass", "glass", 1)
+	util.replace_or_add_ingredient(data.raw.recipe["rail-chain-signal"], "glass", "glass", 1)
+	util.replace_or_add_ingredient(data.raw.recipe["locomotive"], "glass", "glass", 5)
+	util.replace_or_add_ingredient(data.raw.recipe["car"], "glass", "glass", 5)
+	util.replace_or_add_ingredient(data.raw.recipe["display-panel"], "glass", "glass", 1)
 end
 
 -- Burner offshore-pump - ENTITY
