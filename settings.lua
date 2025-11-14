@@ -66,7 +66,12 @@ if mods["aai-industry"] then
 			setting_type = "startup",
 			default_value = true,
 			order = "j[compat]-e[aai]-f"
-		},
+		}
+	})
+end
+
+if mods["aai-industry"] or mods["crushing-industry"] then
+	data:extend({
 		{
 			type = "bool-setting",
 			name = "bc-aai-more-glass-usage",
