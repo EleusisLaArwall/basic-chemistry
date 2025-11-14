@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 14. 11. 2025
+  Optimizations:
+    - Switched to util.tech_lock_recipes if AAI is enabled.
+    - Various typos.
+  Compatibility:
+    - Removed SI scrap engine recipe modification if AAI is enabled.
+    - More Glass Setting is now available if AAI and/or CI is enabled.
+    - Added nightvision-equipment recipe to More Glass Setting if AAI is enabled.
+  Bugfixes:
+    - Fixed SI plastic recycling with syngas.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 13. 11. 2025
   Bugfixes:
