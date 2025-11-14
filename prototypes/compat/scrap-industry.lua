@@ -58,11 +58,11 @@ if mods["scrap-industry"] then
 			}
 		}
 		)
+	end
 
-		-- Make changes only if crushing industry's mod setting has enabled plastic bits
-		if settings.startup["scrap-industry-plastic"].value then
-		-- Add Syngas to Plastic-bar recyling recipe
-			frep.add_ingredient("plastic-bar-from-bits", {type="fluid", name="bc-syn-gas", amount=5})
-		end
+	-- Make changes only IF crushing industry's mod setting has enabled plastic bits AND basic chemistry's mod setting has enabled syngas for plastic bar
+	if settings.startup["scrap-industry-plastic"].value and settings.startup["bc-syn-gas-plastic-bar"].value then
+	-- Add Syngas to Plastic-bar recyling recipe
+		frep.add_ingredient("plastic-bar-from-bits", {type="fluid", name="bc-syn-gas", amount=5})
 	end
 end
