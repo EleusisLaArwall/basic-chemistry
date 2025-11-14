@@ -1,12 +1,8 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
--- FDSL is dependency of crushing-industry
+-- FDSL is dependency of crushing industry
 local frep = require("__fdsl__.lib.recipe")
 
 if mods["scrap-industry"] then
-	-- motor instead of engine !!! Need to remove when Git PR is implemented !!!
-	if mods["aai-industry"] then
-		data.raw.recipe["engine-from-scrap"].results = {{type="item", name="motor", amount=2}}
-	end
 	if settings.startup["bc-si-synthetic-scrap"].value then
 		ScrapIndustry.items["bc-synthetic-plate"] = {scrap="bc-synthetic-scrap", scale=ScrapIndustry.COMMON, failrate=0.02}
 
@@ -63,7 +59,7 @@ if mods["scrap-industry"] then
 		}
 		)
 
-		-- Make changes only if crushing indstry's mod setting has enabled plastic bits
+		-- Make changes only if crushing industry's mod setting has enabled plastic bits
 		if settings.startup["scrap-industry-plastic"].value then
 		-- Add Syngas to Plastic-bar recyling recipe
 			frep.add_ingredient("plastic-bar-from-bits", {type="fluid", name="bc-syn-gas", amount=5})
