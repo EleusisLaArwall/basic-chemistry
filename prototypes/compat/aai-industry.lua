@@ -39,6 +39,7 @@ if settings.startup["bc-aai-more-glass-usage"].value then
 	util.replace_or_add_ingredient(data.raw.recipe["locomotive"], "glass", "glass", 5)
 	util.replace_or_add_ingredient(data.raw.recipe["car"], "glass", "glass", 5)
 	util.replace_or_add_ingredient(data.raw.recipe["display-panel"], "glass", "glass", 1)
+	util.replace_or_add_ingredient(data.raw.recipe["night-vision-equipment"], "glass", "glass", 2)
 end
 
 -- Burner offshore-pump - ENTITY
