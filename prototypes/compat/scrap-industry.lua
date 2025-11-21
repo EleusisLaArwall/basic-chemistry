@@ -4,6 +4,7 @@ local frep = require("__fdsl__.lib.recipe")
 
 if settings.startup["bc-si-synthetic-scrap"].value then
 	ScrapIndustry.items["bc-synthetic-plate"] = {scrap="bc-synthetic-scrap", scale=ScrapIndustry.COMMON, failrate=0.02}
+	ScrapIndustry.products["bc-synthetic-scrap"] = {priority=2}
 
 	data:extend(
 	{
