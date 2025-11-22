@@ -68,6 +68,20 @@ data:extend(
 }
 )
 
+-- Extractor-pump - RECIPE
+local extractor_pump_recipe = table.deepcopy(data.raw["recipe"]["pumpjack"])
+extractor_pump_recipe.name = "bc-extractor-pump"
+extractor_pump_recipe.ingredients = {
+	{type = "item", name = "iron-plate", amount = 10},
+	{type = "item", name = "stone-brick", amount = 5},
+	{type = "item", name = "pipe", amount = 10}
+}
+extractor_pump_recipe.results = {
+	{type="item", name="bc-extractor-pump", amount=1}
+}
+extractor_pump_recipe.enabled = true--	CHANGE ME!!!!!!!
+data:extend({ extractor_pump_recipe })
+
 if settings.startup["bc-petroleum-gas-from-syn-gas"].value then
 	data:extend(
 	{
