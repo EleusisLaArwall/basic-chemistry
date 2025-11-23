@@ -1,4 +1,14 @@
 if mods["space-age"] then
+	-- FULGORA
+	table.insert(data.raw["lightning-attractor"]["fulgoran-ruin-attractor"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 4})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-small"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 2})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-medium"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 3})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-stonehenge"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 5})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-big"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 6})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-huge"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 13})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-colossal"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 19})
+	table.insert(data.raw["simple-entity"]["fulgoran-ruin-vault"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 56})
+	-- GLEBA
 	data:extend(
 	{
 		{
