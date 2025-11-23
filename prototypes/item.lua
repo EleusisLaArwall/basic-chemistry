@@ -28,9 +28,11 @@ data:extend(
 )
 
 -- Extractor-pump - ITEM
-local extractor_pump_item = table.deepcopy(data.raw["item"]["pumpjack"])
-extractor_pump_item.name = "bc-extractor-pump"
-extractor_pump_item.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
-extractor_pump_item.order = "b[fluids]-b[extractor-pump]"
-extractor_pump_item.place_result = "bc-extractor-pump"
-data:extend({ extractor_pump_item })
+--if settings.startup["bc-extractor-pump"].value then
+	local extractor_pump_item = table.deepcopy(data.raw["item"]["pumpjack"])
+	extractor_pump_item.name = "bc-extractor-pump"
+	extractor_pump_item.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
+	extractor_pump_item.order = "b[fluids]-b[extractor-pump]"
+	extractor_pump_item.place_result = "bc-extractor-pump"
+	data:extend({ extractor_pump_item })
+--end

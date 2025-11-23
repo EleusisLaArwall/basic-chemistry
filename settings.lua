@@ -48,6 +48,13 @@ data:extend({
 		setting_type = "startup",
 		default_value = true,
 		order = "e[recipe]-h"
+	},
+	{
+		type = "bool-setting",
+		name = "bc-extractor-pump",
+		setting_type = "startup",
+		default_value = false,
+		order = "e[recipe]-m"
 	}
 })
 
