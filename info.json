@@ -9,6 +9,7 @@
 	"dependencies": [
 		"base >= 1.0",
 		"? space-age",
+		"? basic-chemistry-full-control",
 		"? aai-industry",
 		"? crushing-industry",
 		"? scrap-industry",

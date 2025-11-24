@@ -1,3 +1,5 @@
+local bc_full_control = not mods["basic-chemistry-full-control"]
+
 data:extend({
 	{
 		type = "string-setting",
@@ -55,6 +57,117 @@ data:extend({
 		setting_type = "startup",
 		default_value = false,
 		order = "e[recipe]-m"
+	},
+	{
+		type = "bool-setting",
+		name = "bc-fc-overwrite",
+		setting_type = "startup",
+		default_value = false,
+		order = "v[setting]-f"
+	}
+})
+
+--Full Control Settings
+data:extend({
+	{
+		type = "int-setting",
+		name = "bc-fc-plastic-bar",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 10,
+		minimum_value = 0,
+		maximum_value = 2047,
+		order = "x[settings]-fc-b[plastic-bar]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-electronic-circuit",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-c[electronic-circuit]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-battery",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-e[battery]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-transport-belt",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 2,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-g[transport-belt]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-splitter",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 4,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[splitter]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-inserter",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-m[inserter]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-medium-electric-pole",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 2,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-p[medium-electric-pole]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-big-electric-pole",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 5,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-q[big-electric-pole]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-rail",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-u[rail]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-assembling-machine-1",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 5,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-w[assembling-machine-1]"
 	}
 })
 
