@@ -69,6 +69,88 @@ data:extend({
 
 --Full Control Settings
 data:extend({
+--mod-recipes
+	{
+		type = "double-setting",
+		name = "bc-fc-syn-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 2,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-c[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-coal",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-f[coal]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-i[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 15,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-l[syn-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-synthetic-plate-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-c[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-f[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 20,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-i[syn-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-synthetic-plate",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 2,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-l[synthetic-plate]"
+	},
+--base-recipe-changes
 	{
 		type = "int-setting",
 		name = "bc-fc-plastic-bar",
@@ -77,7 +159,7 @@ data:extend({
 		default_value = 10,
 		minimum_value = 0,
 		maximum_value = 2047,
-		order = "x[settings]-fc-b[plastic-bar]"
+		order = "x[settings]-fc-c[base-recipe]-b[plastic-bar]"
 	},
 	{
 		type = "int-setting",
@@ -87,7 +169,7 @@ data:extend({
 		default_value = 1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[electronic-circuit]"
+		order = "x[settings]-fc-c[base-recipe]-c[electronic-circuit]"
 	},
 	{
 		type = "int-setting",
@@ -97,7 +179,7 @@ data:extend({
 		default_value = 1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-e[battery]"
+		order = "x[settings]-fc-c[base-recipe]-e[battery]"
 	},
 	{
 		type = "int-setting",
@@ -107,7 +189,7 @@ data:extend({
 		default_value = 2,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-g[transport-belt]"
+		order = "x[settings]-fc-c[base-recipe]-g[transport-belt]"
 	},
 	{
 		type = "int-setting",
@@ -117,7 +199,7 @@ data:extend({
 		default_value = 4,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-i[splitter]"
+		order = "x[settings]-fc-c[base-recipe]-i[splitter]"
 	},
 	{
 		type = "int-setting",
@@ -127,7 +209,7 @@ data:extend({
 		default_value = 1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-m[inserter]"
+		order = "x[settings]-fc-c[base-recipe]-m[inserter]"
 	},
 	{
 		type = "int-setting",
@@ -137,7 +219,7 @@ data:extend({
 		default_value = 2,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-p[medium-electric-pole]"
+		order = "x[settings]-fc-c[base-recipe]-p[medium-electric-pole]"
 	},
 	{
 		type = "int-setting",
@@ -147,7 +229,7 @@ data:extend({
 		default_value = 5,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-q[big-electric-pole]"
+		order = "x[settings]-fc-c[base-recipe]-q[big-electric-pole]"
 	},
 	{
 		type = "int-setting",
@@ -157,7 +239,7 @@ data:extend({
 		default_value = 1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-u[rail]"
+		order = "x[settings]-fc-c[base-recipe]-u[rail]"
 	},
 	{
 		type = "int-setting",
@@ -167,7 +249,7 @@ data:extend({
 		default_value = 5,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-w[assembling-machine-1]"
+		order = "x[settings]-fc-c[base-recipe]-w[assembling-machine-1]"
 	}
 })
 

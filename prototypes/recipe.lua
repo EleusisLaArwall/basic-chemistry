@@ -1,3 +1,23 @@
+local bc_fc_syn_gas_energy = settings.startup["bc-fc-syn-gas-energy"].value
+local bc_fc_syn_gas_coal = settings.startup["bc-fc-syn-gas-coal"].value
+local bc_fc_syn_gas_water = settings.startup["bc-fc-syn-gas-water"].value
+local bc_fc_syn_gas_syn_gas = settings.startup["bc-fc-syn-gas-syn-gas"].value
+local bc_fc_synthetic_plate_energy = settings.startup["bc-fc-synthetic-plate-energy"].value
+local bc_fc_synthetic_plate_water = settings.startup["bc-fc-synthetic-plate-water"].value
+local bc_fc_synthetic_plate_syn_gas = settings.startup["bc-fc-synthetic-plate-syn-gas"].value
+local bc_fc_synthetic_plate_synthetic_plate = settings.startup["bc-fc-synthetic-plate-synthetic-plate"].value
+
+if settings.startup["bc-fc-overwrite"].value then
+	bc_fc_syn_gas_energy = 2
+	bc_fc_syn_gas_coal = 1
+	bc_fc_syn_gas_water = 10
+	bc_fc_syn_gas_syn_gas = 15
+	bc_fc_synthetic_plate_energy = 1
+	bc_fc_synthetic_plate_water = 10
+	bc_fc_synthetic_plate_syn_gas = 20
+	bc_fc_synthetic_plate_synthetic_plate = 2
+end
+
 data:extend(
 {
 	{
@@ -5,15 +25,15 @@ data:extend(
 		name = "bc-syn-gas",
 		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		enabled = false,
-		energy_required = 2,
+		energy_required = bc_fc_syn_gas_energy,--2,
 		ingredients =
 		{
-			{type="item", name="coal", amount=1},
-			{type = "fluid", name = "water", amount = 10}
+			{type="item", name="coal", amount=bc_fc_syn_gas_coal},
+			{type = "fluid", name = "water", amount = bc_fc_syn_gas_water}
 		},
 		results =
 		{
-			{type="fluid", name="bc-syn-gas", amount=15}
+			{type="fluid", name="bc-syn-gas", amount=bc_fc_syn_gas_syn_gas}
 		},
 		allow_productivity = true,
 		subgroup = "fluid-recipes",
@@ -31,15 +51,15 @@ data:extend(
 		name = "bc-synthetic-plate",
 		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		enabled = false,
-		energy_required = 1,
+		energy_required = bc_fc_synthetic_plate_energy,--1,
 		ingredients =
 		{
-			{type = "fluid", name = "water", amount = 10},
-			{type = "fluid", name = "bc-syn-gas", amount = 20}
+			{type = "fluid", name = "water", amount = bc_fc_synthetic_plate_water},
+			{type = "fluid", name = "bc-syn-gas", amount = bc_fc_synthetic_plate_syn_gas}
 		},
 		results =
 		{
-			{type = "item", name = "bc-synthetic-plate", amount = 2}
+			{type = "item", name = "bc-synthetic-plate", amount = bc_fc_synthetic_plate_synthetic_plate}
 		},
 		allow_productivity = true,
 		crafting_machine_tint =
