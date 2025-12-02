@@ -37,6 +37,7 @@ data:extend({
 		default_value = true,
 		order = "e[recipe]-f-e"
 	},
+-- Moved syn-gas from wood and rail recipe to FC
 -- 	{
 -- 		type = "bool-setting",
 -- 		name = "bc-syn-gas-from-wood",
