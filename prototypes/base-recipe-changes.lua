@@ -44,7 +44,7 @@ if sp_amount_inserter > 0 then
 end
 -- Add synthetic-plate only without AAI. (With AAI small-iron-pole; See compat/aai-industry.lua)
 if sp_amount_medium_electric_pole > 0 and not mods["aai-industry"] then
-	table.insert(data.raw["recipe"]["electronic-circuit"].ingredients, {type="item", name="bc-synthetic-plate", amount=sp_amount_medium_electric_pole})
+	table.insert(data.raw["recipe"]["medium-electric-pole"].ingredients, {type="item", name="bc-synthetic-plate", amount=sp_amount_medium_electric_pole})
 end
 if sp_amount_big_electric_pole > 0 then
 	table.insert(data.raw["recipe"]["big-electric-pole"].ingredients, {type="item", name="bc-synthetic-plate", amount=sp_amount_big_electric_pole})

@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+Date: 02. 12. 2025
+  Features:
+    - Added a bunch of hidden advanced Mod-Settings
+    - Added support for "Full Control" to make advanced Mod-Settings visible
+  Changes:
+    - Removed bool setting Syn-gas from Wood (see Full Control)
+    - Removed bool setting Rail requires Synthetic plate (see Full Control)
+---------------------------------------------------------------------------------------------------
 Version: 0.1.4
 Date: 23. 11. 2025
   Minor Features:
