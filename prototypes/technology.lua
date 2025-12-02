@@ -18,6 +18,6 @@ if settings.startup["bc-natural-gas"].value then
 	end
 end
 
-if settings.startup["bc-syn-gas-from-wood"].value then
+if settings.startup["bc-fc-syn-gas-from-wood"].value > 0 then
 	table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-syn-gas-from-wood", type = "unlock-recipe"})
 end

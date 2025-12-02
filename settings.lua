@@ -37,20 +37,20 @@ data:extend({
 		default_value = true,
 		order = "e[recipe]-f-e"
 	},
-	{
-		type = "bool-setting",
-		name = "bc-syn-gas-from-wood",
-		setting_type = "startup",
-		default_value = false,
-		order = "e[recipe]-g"
-	},
-	{
-		type = "bool-setting",
-		name = "bc-rail-synthetic-plate",
-		setting_type = "startup",
-		default_value = true,
-		order = "e[recipe]-h"
-	},
+-- 	{
+-- 		type = "bool-setting",
+-- 		name = "bc-syn-gas-from-wood",
+-- 		setting_type = "startup",
+-- 		default_value = false,
+-- 		order = "e[recipe]-g"
+-- 	},
+-- 	{
+-- 		type = "bool-setting",
+-- 		name = "bc-rail-synthetic-plate",
+-- 		setting_type = "startup",
+-- 		default_value = true,
+-- 		order = "e[recipe]-h"
+-- 	},
 	{
 		type = "bool-setting",
 		name = "bc-extractor-pump",
@@ -250,6 +250,42 @@ data:extend({
 		minimum_value = 0,
 		maximum_value = 255,
 		order = "x[settings]-fc-c[base-recipe]-w[assembling-machine-1]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-wood",
+		setting_type = "startup",
+		default_value = 0,
+		minimum_value = 0,
+		maximum_value = 255,
+		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-d"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-wood-water",
+		setting_type = "startup",
+		default_value = 10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-e"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-wood-syn-gas",
+		setting_type = "startup",
+		default_value = 15,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-f"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-wood-energy",
+		setting_type = "startup",
+		default_value = 2,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-g"
 	}
 })
 

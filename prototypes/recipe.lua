@@ -6,6 +6,10 @@ local bc_fc_synthetic_plate_energy = settings.startup["bc-fc-synthetic-plate-ene
 local bc_fc_synthetic_plate_water = settings.startup["bc-fc-synthetic-plate-water"].value
 local bc_fc_synthetic_plate_syn_gas = settings.startup["bc-fc-synthetic-plate-syn-gas"].value
 local bc_fc_synthetic_plate_synthetic_plate = settings.startup["bc-fc-synthetic-plate-synthetic-plate"].value
+local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
+local bc_fc_syn_gas_from_wood_water = settings.startup["bc-fc-syn-gas-from-wood-water"].value
+local bc_fc_syn_gas_from_wood_syn_gas = settings.startup["bc-fc-syn-gas-from-wood-syn-gas"].value
+local bc_fc_syn_gas_from_wood_energy = settings.startup["bc-fc-syn-gas-from-wood-energy"].value
 
 if settings.startup["bc-fc-overwrite"].value then
 	bc_fc_syn_gas_energy = 2
@@ -16,6 +20,10 @@ if settings.startup["bc-fc-overwrite"].value then
 	bc_fc_synthetic_plate_water = 10
 	bc_fc_synthetic_plate_syn_gas = 20
 	bc_fc_synthetic_plate_synthetic_plate = 2
+	bc_fc_syn_gas_from_wood = 0
+	bc_fc_syn_gas_from_wood_water = 10
+	bc_fc_syn_gas_from_wood_syn_gas = 15
+	bc_fc_syn_gas_from_wood_energy = 2
 end
 
 data:extend(
@@ -218,7 +226,7 @@ if settings.startup["bc-natural-gas"].value then
 	end
 end
 
-if settings.startup["bc-syn-gas-from-wood"].value then
+if bc_fc_syn_gas_from_wood > 0 then
 	data:extend(
 	{
 		{
@@ -226,15 +234,15 @@ if settings.startup["bc-syn-gas-from-wood"].value then
 			name = "bc-syn-gas-from-wood",
 			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 			enabled = false,
-			energy_required = 2,
+			energy_required = bc_fc_syn_gas_from_wood_energy,
 			ingredients =
 			{
-				{type="item", name="wood", amount=2},
-				{type = "fluid", name = "water", amount = 10}
+				{type = "item", name = "wood", amount = bc_fc_syn_gas_from_wood},
+				{type = "fluid", name = "water", amount = bc_fc_syn_gas_from_wood_water}
 			},
 			results =
 			{
-				{type="fluid", name="bc-syn-gas", amount=15}
+				{type = "fluid", name = "bc-syn-gas", amount = bc_fc_syn_gas_from_wood_syn_gas}
 			},
 			allow_productivity = true,
 			icons = {

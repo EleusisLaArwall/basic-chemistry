@@ -49,8 +49,7 @@ end
 if sp_amount_big_electric_pole > 0 then
 	table.insert(data.raw["recipe"]["big-electric-pole"].ingredients, {type="item", name="bc-synthetic-plate", amount=sp_amount_big_electric_pole})
 end
--- Synthetic-plate for rails can be disabled via mod setting.
-if sp_amount_rail > 0 and settings.startup["bc-rail-synthetic-plate"].value then
+if sp_amount_rail > 0 then
 	table.insert(data.raw["recipe"]["rail"].ingredients, {type="item", name="bc-synthetic-plate", amount=sp_amount_rail})
 end
 if sp_amount_assembling_machine_1 > 0 then
