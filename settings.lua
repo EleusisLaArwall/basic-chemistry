@@ -72,16 +72,6 @@ data:extend({
 data:extend({
 --mod-recipes
 	{
-		type = "double-setting",
-		name = "bc-fc-syn-gas-energy",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = 2,
-		minimum_value = 0.1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-c[energy]"
-	},
-	{
 		type = "int-setting",
 		name = "bc-fc-syn-gas-coal",
 		setting_type = "startup",
@@ -89,7 +79,7 @@ data:extend({
 		default_value = 1,
 		minimum_value = 1,
 		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-f[coal]"
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-d[coal]"
 	},
 	{
 		type = "int-setting",
@@ -99,7 +89,7 @@ data:extend({
 		default_value = 10,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-i[water]"
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-e[water]"
 	},
 	{
 		type = "int-setting",
@@ -109,17 +99,17 @@ data:extend({
 		default_value = 15,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-l[syn-gas]"
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-g[syn-gas]"
 	},
 	{
 		type = "double-setting",
-		name = "bc-fc-synthetic-plate-energy",
+		name = "bc-fc-syn-gas-energy",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = 1,
+		default_value = 2,
 		minimum_value = 0.1,
 		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-c[energy]"
+		order = "x[settings]-fc-a[mod]-c[syn-gas]-j[energy]"
 	},
 	{
 		type = "int-setting",
@@ -129,7 +119,7 @@ data:extend({
 		default_value = 10,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-f[water]"
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-d[water]"
 	},
 	{
 		type = "int-setting",
@@ -139,7 +129,7 @@ data:extend({
 		default_value = 20,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-i[syn-gas]"
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-e[syn-gas]"
 	},
 	{
 		type = "int-setting",
@@ -149,7 +139,17 @@ data:extend({
 		default_value = 2,
 		minimum_value = 1,
 		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-l[synthetic-plate]"
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-g[synthetic-plate]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-synthetic-plate-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 1,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-j[energy]"
 	},
 --base-recipe-changes
 	{
