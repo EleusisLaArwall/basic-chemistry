@@ -5,6 +5,7 @@ require("prototypes.item")
 require("prototypes.recipe")
 require("prototypes.resources")
 require("prototypes.technology")
+require("prototypes.virtual-signal")
 
 require("prototypes.compat.space-age")
 require("prototypes.compat.any-planet-start")

@@ -60,6 +60,14 @@ data:extend({
 		order = "e[recipe]-m"
 	},
 	{
+		type = "string-setting",
+		name = "bc-synthetic-plate-icon",
+		setting_type = "startup",
+		default_value = "default",
+		allowed_values = { "default", "saf", "brown", "white", "bar-brown", "bar-white" },
+		order = "m[visual]"
+	},
+	{
 		type = "bool-setting",
 		name = "bc-fc-overwrite",
 		setting_type = "startup",

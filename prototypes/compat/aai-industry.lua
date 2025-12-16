@@ -3,12 +3,15 @@ local resource_autoplace = require("resource-autoplace");
 
 if settings.startup["bc-aai-remove-electronic-circuit-wood"].value then
 -- remove "electric-circuit from wood" recipe (provided by aai-industry)
-	data.raw.recipe["electronic-circuit-wood"] = nil
+--	data.raw.recipe["electronic-circuit-wood"] = nil
+	data.raw.recipe["electronic-circuit-wood"].hidden = true
 end
 
 if settings.startup["bc-aai-remove-stone-tablet"].value then
 -- remove stone-tablet recipe (provided by aai-industry)
-	data.raw.recipe["stone-tablet"] = nil
+--	data.raw.recipe["stone-tablet"] = nil
+	data.raw.recipe["stone-tablet"].hidden = true
+	data.raw.item["stone-tablet"].hidden = true
 -- replace stone-tablet with iron-plate for electronic-circuit (provided by aai-industry)
 	util.replace_or_add_ingredient_sub(data.raw.recipe["electronic-circuit"], "stone-tablet", "iron-plate", 1)
 -- revert the amount of stone on the map back to default (increased by aai-industry; 10, 1.1, 1.5)
