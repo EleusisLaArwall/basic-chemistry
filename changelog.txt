@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.7
+Date: 18. 12. 2025
+  Info:
+    - A heads-up for an upcoming change to Natural-gas processing in a future release: Recipes will move from chemical plant to oil refinery.
+  Bugfixes:
+    - Fixed crash with Krastorio2 and more-glass setting
+    - Fixed crash with Krastorio2 and AAI; Recipes and items are now hidden instead of deleted (thanks to UNOwen for this to my attention!)
+    - Fixed not hidden settings for Wood → Syn-gas
+  Features:
+    - Added a selection of various icons for synthetic-plate to the Mod Settings (thanks to SafTheLamb for the clean circuit icon!)
+  Changes:
+    - Added thumbnail with higher resolution
+---------------------------------------------------------------------------------------------------
 Version: 0.1.6
 Date: 02. 12. 2025
   Bugfixes:

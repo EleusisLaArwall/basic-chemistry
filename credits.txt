@@ -29,7 +29,17 @@ Changes: Yes. Icon combined, recolored, resized and rearranged.
 
 ---------------------------------------------------------------------------------------------------
 
+Icon for:
+- synthetic plate (clean circuit)
+
+Creators: [SafTheLamb](https://github.com/SafTheLamb)
+Source: Private chat on Discord
+
+---------------------------------------------------------------------------------------------------
+
 My personal thanks to:
 - the entire Wube team for this wonderful game called Factorio.
 - Malcolm Riley for generously allowing others to use these great assets.
 - Snouz for the centralized graphics catalog, that made my life much easier (https://github.com/snouz/factorio_free_graphics_for_modders).
+- SafTheLamb for feedback and general help.
+
