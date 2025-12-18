@@ -1,0 +1,7 @@
+{
+	"recipe":
+	[
+		["bc-basic-natural-gas-processing", "bc-basic-natural-gas-processing-legacy"],
+		["bc-advanced-natural-gas-processing", "bc-advanced-natural-gas-processing-legacy"]
+	]
+}

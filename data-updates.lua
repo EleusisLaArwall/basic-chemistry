@@ -13,3 +13,6 @@ end
 if mods["scrap-industry"] then
 	require("prototypes.compat.scrap-industry-updates")
 end
+if mods["scrap-chemistry"] then
+	require("prototypes.compat.scrap-chemistry-updates")
+end

@@ -1,3 +1,10 @@
+-- Basic Chemistry Mod Settings
+local bc_natural_gas = settings.startup["bc-natural-gas"].value
+local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
+local bc_petroleum_gas_from_syn_gas = settings.startup["bc-petroleum-gas-from-syn-gas"].value
+local bc_extractor_pump = settings.startup["bc-extractor-pump"].value
+
+-- Basic Chemistry Full Control Mod Settings
 local bc_fc_syn_gas_energy = settings.startup["bc-fc-syn-gas-energy"].value
 local bc_fc_syn_gas_coal = settings.startup["bc-fc-syn-gas-coal"].value
 local bc_fc_syn_gas_water = settings.startup["bc-fc-syn-gas-water"].value
@@ -11,6 +18,7 @@ local bc_fc_syn_gas_from_wood_water = settings.startup["bc-fc-syn-gas-from-wood-
 local bc_fc_syn_gas_from_wood_syn_gas = settings.startup["bc-fc-syn-gas-from-wood-syn-gas"].value
 local bc_fc_syn_gas_from_wood_energy = settings.startup["bc-fc-syn-gas-from-wood-energy"].value
 
+-- Default values for Full Control overwrite Mod Setting
 if settings.startup["bc-fc-overwrite"].value then
 	bc_fc_syn_gas_energy = 2
 	bc_fc_syn_gas_coal = 1
@@ -24,6 +32,16 @@ if settings.startup["bc-fc-overwrite"].value then
 	bc_fc_syn_gas_from_wood_water = 10
 	bc_fc_syn_gas_from_wood_syn_gas = 15
 	bc_fc_syn_gas_from_wood_energy = 2
+end
+
+-- Variables for other mods
+local bc_methane_gas_name = "bc-methane-gas"
+local bc_fluid_box_methane_gas = 2
+local bc_fluid_box_petroleum_gas = 3
+if mods["scrap-chemistry"] then
+	bc_methane_gas_name = "methane"
+	bc_fluid_box_methane_gas = 3
+	bc_fluid_box_petroleum_gas = 1
 end
 
 data:extend(
@@ -44,6 +62,7 @@ data:extend(
 			{type="fluid", name="bc-syn-gas", amount=bc_fc_syn_gas_syn_gas}
 		},
 		allow_productivity = true,
+		main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
 		subgroup = "fluid-recipes",
 		order = "a[rng-processing]-a[a-syn-gas]",
 		crafting_machine_tint =
@@ -96,7 +115,7 @@ data:extend(
 }
 )
 
-if settings.startup["bc-petroleum-gas-from-syn-gas"].value then
+if bc_petroleum_gas_from_syn_gas then
 	data:extend(
 	{
 		{
@@ -108,7 +127,7 @@ if settings.startup["bc-petroleum-gas-from-syn-gas"].value then
 			ingredients =
 			{
 				{type = "fluid", name = "steam", amount = 50},
-				{type = "fluid", name = "bc-syn-gas", amount = 50}
+				{type = "fluid", name = "bc-syn-gas", amount = 60}
 			},
 			results =
 			{
@@ -118,7 +137,7 @@ if settings.startup["bc-petroleum-gas-from-syn-gas"].value then
 			main_product = "",
 			icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-syn-gas.png",
 			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-b[petroleum-gas-from-syn-gas]",
+			order = "a[rng-processing]-d[petroleum-gas-from-syn-gas]",
 			crafting_machine_tint =
 			{
 				primary = {r = 0.60, g = 0.20, b = 0.80, a = 1.000},--	#9A32CD	darkorchid2
@@ -132,14 +151,15 @@ if settings.startup["bc-petroleum-gas-from-syn-gas"].value then
 	)
 end
 
-if settings.startup["bc-natural-gas"].value then
+if bc_natural_gas or bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{
 			type = "recipe",
-			name = "bc-basic-natural-gas-processing",
+			name = "bc-basic-natural-gas-processing-legacy",
 			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
-			enabled = false,
+			enabled = true,
+			hidden = true,
 			energy_required = 2,
 			ingredients =
 			{
@@ -152,7 +172,7 @@ if settings.startup["bc-natural-gas"].value then
 			},
 			allow_productivity = true,
 			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing.png",
+			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing-legacy.png",
 			subgroup = "fluid-recipes",
 			order = "a[rng-processing]-a[basic-natural-gas-processing]",
 			crafting_machine_tint =
@@ -165,9 +185,10 @@ if settings.startup["bc-natural-gas"].value then
 		},
 		{
 			type = "recipe",
-			name = "bc-advanced-natural-gas-processing",
+			name = "bc-advanced-natural-gas-processing-legacy",
 			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
-			enabled = false,
+			enabled = true,
+			hidden = true,
 			energy_required = 2,
 			ingredients =
 			{
@@ -181,9 +202,81 @@ if settings.startup["bc-natural-gas"].value then
 			},
 			allow_productivity = true,
 			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing.png",
+			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing-legacy.png",
 			subgroup = "fluid-recipes",
 			order = "a[rng-processing]-b[advanced-natural-gas-processing]",
+			crafting_machine_tint =
+			{
+				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
+				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+			}
+		},
+		{
+			type = "recipe",
+			name = "bc-bas-natural-gas-processing",
+			category = "oil-processing",
+			enabled = false,
+			energy_required = 5,
+			ingredients =
+			{
+				{type = "fluid", name = "bc-natural-gas", amount = 100, fluidbox_index = 2}
+			},
+			results =
+			{
+				{type = "fluid", name = bc_methane_gas_name, amount = 75, fluidbox_index = bc_fluid_box_methane_gas}
+			},
+			allow_productivity = true,
+			main_product = "",
+			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing.png",
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[bas-natural-gas-processing]"
+		},
+		{
+			type = "recipe",
+			name = "bc-adv-natural-gas-processing",
+			category = "oil-processing",
+			enabled = false,
+			energy_required = 5,
+			ingredients =
+			{
+				{type = "fluid", name = "water", amount = 50},
+				{type = "fluid", name = "bc-natural-gas", amount = 100}
+			},
+			results =
+			{
+				{type = "fluid", name = bc_methane_gas_name, amount = 100, fluidbox_index = bc_fluid_box_methane_gas},
+				{type = "fluid", name = "petroleum-gas", amount = 30, fluidbox_index = bc_fluid_box_petroleum_gas},
+			},
+			allow_productivity = true,
+			main_product = "",
+			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing.png",
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-b[adv-natural-gas-processing]"
+		},
+		{
+			type = "recipe",
+			name = "bc-syn-gas-from-methane-gas",
+			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			enabled = false,
+			energy_required = 2,
+			ingredients =
+			{
+				{type = "fluid", name = "water", amount = 20},
+				{type = "fluid", name = bc_methane_gas_name, amount = 30}
+			},
+			results =
+			{
+				{type = "fluid", name = "bc-syn-gas", amount = 30}
+			},
+			allow_productivity = true,
+			main_product = "",
+			icon = "__basic-chemistry__/graphics/icons/syn-gas-from-methane-gas.png",
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-c[syn-gas-from-methane-gas]",
+			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{
 				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
@@ -195,35 +288,35 @@ if settings.startup["bc-natural-gas"].value then
 		}
 	}
 	)
-	-- IF mod settings "natural-gas" AND "natural-gas-from-oil" are TRUE:
-	if settings.startup["bc-natural-gas-from-oil"].value then
-		data:extend(
+end
+
+if bc_natural_gas_from_oil then
+	data:extend(
+	{
 		{
+			type = "recipe",
+			name = "bc-advanced-oil-processing-with-gas",
+			category = "oil-processing",
+			enabled = false,
+			energy_required = 5,
+			ingredients =
 			{
-				type = "recipe",
-				name = "bc-advanced-oil-processing-with-gas",
-				category = "oil-processing",
-				enabled = false,
-				energy_required = 5,
-				ingredients =
-				{
-					{type = "fluid", name = "water", amount = 100},
-					{type = "fluid", name = "crude-oil", amount = 100}
-				},
-				results =
-				{
-					{type = "fluid", name = "heavy-oil", amount = 25},
-					{type = "fluid", name = "light-oil", amount = 45},
-					{type = "fluid", name = "bc-natural-gas", amount = 115}
-				},
-				allow_productivity = true,
-				icon = "__basic-chemistry__/graphics/icons/advanced-oil-processing-with-gas.png",
-				subgroup = "fluid-recipes",
-				order = "a[oil-processing]-c[advanced-oil-processing-with-gas]"
-			}
+				{type = "fluid", name = "water", amount = 100},
+				{type = "fluid", name = "crude-oil", amount = 100}
+			},
+			results =
+			{
+				{type = "fluid", name = "heavy-oil", amount = 25},
+				{type = "fluid", name = "light-oil", amount = 45},
+				{type = "fluid", name = "bc-natural-gas", amount = 120}
+			},
+			allow_productivity = true,
+			icon = "__basic-chemistry__/graphics/icons/advanced-oil-processing-with-gas.png",
+			subgroup = "fluid-recipes",
+			order = "a[oil-processing]-c[advanced-oil-processing-with-gas]"
 		}
-		)
-	end
+	}
+	)
 end
 
 if bc_fc_syn_gas_from_wood > 0 then
@@ -264,7 +357,7 @@ if bc_fc_syn_gas_from_wood > 0 then
 end
 
 -- Extractor-pump - RECIPE
-if settings.startup["bc-extractor-pump"].value then
+if bc_extractor_pump then
 	local extractor_pump_recipe = table.deepcopy(data.raw["recipe"]["pumpjack"])
 	extractor_pump_recipe.name = "bc-extractor-pump"
 	extractor_pump_recipe.ingredients = {

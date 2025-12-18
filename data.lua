@@ -24,3 +24,6 @@ end
 if mods["scrap-industry"] then
 	require("prototypes.compat.scrap-industry")
 end
+if mods["scrap-chemistry"] then
+	require("prototypes.compat.scrap-chemistry")
+end

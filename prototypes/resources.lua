@@ -1,7 +1,11 @@
 local resource_autoplace = require("resource-autoplace");
 local tile_sounds = require("__base__.prototypes.tile.tile-sounds")
 
-if settings.startup["bc-natural-gas"].value then
+-- Basic Chemistry Mod Settings
+local bc_natural_gas = settings.startup["bc-natural-gas"].value
+local bc_coal_amount = settings.startup["bc-coal-amount"].value
+
+if bc_natural_gas then
 	resource_autoplace.initialize_patch_set("bc-natural-gas", true)
 	data.raw.planet.nauvis.map_gen_settings.autoplace_controls["bc-natural-gas"] = {}
 	data.raw.planet.nauvis.map_gen_settings.autoplace_settings.entity.settings["bc-natural-gas"] = {}
@@ -134,7 +138,7 @@ if settings.startup["bc-natural-gas"].value then
 	data.raw["map-gen-presets"]["default"]["ribbon-world"]["basic_settings"]["autoplace_controls"]["bc-natural-gas"] = { frequency = 3, size = 0.5, richness = 2}
 end
 
-if settings.startup["bc-coal-amount"].value == "copper-ore" then
+if bc_coal_amount == "copper-ore" then
 	data.raw.resource.coal.autoplace = resource_autoplace.resource_autoplace_settings{
 		name = "coal",
 		order = "b",
@@ -145,7 +149,7 @@ if settings.startup["bc-coal-amount"].value == "copper-ore" then
 	}
 end
 
-if settings.startup["bc-coal-amount"].value == "iron-ore" then
+if bc_coal_amount == "iron-ore" then
 	data.raw.resource.coal.autoplace = resource_autoplace.resource_autoplace_settings{
 		name = "coal",
 		order = "b",
