@@ -275,7 +275,38 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			main_product = "",
 			icon = "__basic-chemistry__/graphics/icons/syn-gas-from-methane-gas.png",
 			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-c[syn-gas-from-methane-gas]",
+--			order = "a[rng-processing]-c[syn-gas-from-methane-gas]",
+			order = "b[fluid-chemistry]-b[syn-gas-from-methane-gas]",
+			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
+			crafting_machine_tint =
+			{
+				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
+				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+			}
+		},
+		{
+			type = "recipe",
+			name = "bc-petroleum-gas-cracking",
+			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			enabled = false,
+			energy_required = 1,
+			ingredients =
+			{
+				{type = "fluid", name = "water", amount = 30},
+				{type = "fluid", name = "petroleum-gas", amount = 20}
+			},
+			results =
+			{
+				{type = "fluid", name = bc_methane_gas_name, amount = 10}
+			},
+			allow_productivity = true,
+			main_product = "",
+			icon = "__basic-chemistry__/graphics/icons/petroleum-gas-cracking.png",
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-b[petroleum-gas-cracking]",
 			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{

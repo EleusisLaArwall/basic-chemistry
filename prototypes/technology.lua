@@ -23,6 +23,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 	table.insert(data.raw.technology["oil-gathering"].effects, {recipe = "bc-bas-natural-gas-processing", type = "unlock-recipe"})
 	table.insert(data.raw.technology["oil-gathering"].effects, {recipe = "bc-syn-gas-from-methane-gas", type = "unlock-recipe"})
 	table.insert(data.raw.technology["advanced-oil-processing"].effects, {recipe = "bc-adv-natural-gas-processing", type = "unlock-recipe"})
+	table.insert(data.raw.technology["advanced-oil-processing"].effects, {recipe = "bc-petroleum-gas-cracking", type = "unlock-recipe"})
 end
 
 if bc_natural_gas_from_oil then
