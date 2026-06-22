@@ -251,6 +251,7 @@ data:extend(
 --if settings.startup["bc-extractor-pump"].value then
 	local extractor_pump = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
 	extractor_pump.name = "bc-extractor-pump"
+	extractor_pump.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
 	extractor_pump.minable.result = "bc-extractor-pump"
 	extractor_pump.next_upgrade = "pumpjack"
 	extractor_pump.energy_source = {
