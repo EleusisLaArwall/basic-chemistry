@@ -63,8 +63,8 @@ data:extend({
 		type = "string-setting",
 		name = "bc-synthetic-plate-icon",
 		setting_type = "startup",
-		default_value = "default",
-		allowed_values = { "default", "saf", "brown", "white", "bar-brown", "bar-white" },
+		default_value = "bar-brown",
+		allowed_values = { "original", "saf", "brown", "white", "bar-brown", "bar-white" },
 		order = "m[visual]"
 	},
 	{
