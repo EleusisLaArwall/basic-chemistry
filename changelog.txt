@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 23. 06. 2026
+  Features:
+    - Updated for Factorio 2.1
+    - New fluid Methane-gas
+  Changes:
+    - Basic and Advanced Natural Gas Processing now use the Oil Refinery
+    - Old Basic and Advanced Natural Gas Processing recipes are kept as legacy for now (will be removed at some point)
+    - Mod Setting for Natural Gas from Crude Oil can now be toggled independently
+    - Added Petroleum-gas to Methane-gas cracking
+    - Removed Petroleum-gas from Syngas recipe (to prevent loop)
+    - Changed default icon for Synthetic-plate to synthetic-bar-brown
+  Bugfixes:
+    - Fixed Extractor pump missing entity-icon
+    - Fixed Extractor pump graphics config
+  Info:
+    - Compatibility with other mods untested for Factorio 2.1
+---------------------------------------------------------------------------------------------------
 Version: 0.1.7
 Date: 18. 12. 2025
   Info:
