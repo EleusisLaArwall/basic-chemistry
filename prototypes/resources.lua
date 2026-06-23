@@ -53,7 +53,7 @@ if bc_natural_gas then
 						name = "bc-natural-gas",
 						amount_min = 10,
 						amount_max = 10,
-						probability = 1
+						independant_probability = 1
 					}
 				}
 			},

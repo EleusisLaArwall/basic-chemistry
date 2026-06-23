@@ -16,13 +16,13 @@ data:extend({
 		default_value = true,
 		order = "e[recipe]-d"
 	},
-	{
-		type = "bool-setting",
-		name = "bc-petroleum-gas-from-syn-gas",
-		setting_type = "startup",
-		default_value = false,
-		order = "e[recipe]-e"
-	},
+-- 	{
+-- 		type = "bool-setting",
+-- 		name = "bc-petroleum-gas-from-syn-gas",
+-- 		setting_type = "startup",
+-- 		default_value = false,
+-- 		order = "e[recipe]-e"
+-- 	},
 	{
 		type = "bool-setting",
 		name = "bc-natural-gas",

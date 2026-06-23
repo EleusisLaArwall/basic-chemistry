@@ -1,7 +1,6 @@
 -- Basic Chemistry Mod Settings
 local bc_natural_gas = settings.startup["bc-natural-gas"].value
 local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
-local bc_petroleum_gas_from_syn_gas = settings.startup["bc-petroleum-gas-from-syn-gas"].value
 local bc_extractor_pump = settings.startup["bc-extractor-pump"].value
 
 -- Basic Chemistry Full Control Mod Settings
@@ -49,7 +48,8 @@ data:extend(
 	{
 		type = "recipe",
 		name = "bc-syn-gas",
-		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+		categories = {"chemistry"},
 		enabled = false,
 		energy_required = bc_fc_syn_gas_energy,--2,
 		ingredients =
@@ -76,7 +76,8 @@ data:extend(
 	{
 		type = "recipe",
 		name = "bc-synthetic-plate",
-		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+		categories = {"chemistry"},
 		enabled = false,
 		energy_required = bc_fc_synthetic_plate_energy,--1,
 		ingredients =
@@ -115,49 +116,14 @@ data:extend(
 }
 )
 
-if bc_petroleum_gas_from_syn_gas then
-	data:extend(
-	{
-		{
-			type = "recipe",
-			name = "bc-petroleum-gas-from-syn-gas",
-			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
-			enabled = false,
-			energy_required = 2,
-			ingredients =
-			{
-				{type = "fluid", name = "steam", amount = 50},
-				{type = "fluid", name = "bc-syn-gas", amount = 60}
-			},
-			results =
-			{
-				{type = "fluid", name = "petroleum-gas", amount = 20}
-			},
-			allow_productivity = true,
-			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-syn-gas.png",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-d[petroleum-gas-from-syn-gas]",
-			crafting_machine_tint =
-			{
-				primary = {r = 0.60, g = 0.20, b = 0.80, a = 1.000},--	#9A32CD	darkorchid2
-				secondary = {r = 0.74, g = 0.63, b = 0.80, a = 1.000}, --	#BDA0CB	purple candy
-				tertiary = {r = 0.96, g = 0.80, b = 0.85, a = 1.000}, --	#F6CCDA	pink shell
-				quaternary = {r = 0.45, g = 0.35, b = 0.40, a = 1.000},--	#72587F	indigo tile
-	--			quaternary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
-			}
-		}
-	}
-	)
-end
-
 if bc_natural_gas or bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{
 			type = "recipe",
 			name = "bc-basic-natural-gas-processing-legacy",
-			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			categories = {"chemistry"},
 			enabled = true,
 			hidden = true,
 			energy_required = 2,
@@ -186,7 +152,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-advanced-natural-gas-processing-legacy",
-			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			categories = {"chemistry"},
 			enabled = true,
 			hidden = true,
 			energy_required = 2,
@@ -217,7 +184,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-bas-natural-gas-processing",
-			category = "oil-processing",
+			--category = "oil-processing",
+			categories = {"oil-processing"},
 			enabled = false,
 			energy_required = 5,
 			ingredients =
@@ -237,7 +205,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-adv-natural-gas-processing",
-			category = "oil-processing",
+			--category = "oil-processing",
+			categories = {"oil-processing"},
 			enabled = false,
 			energy_required = 5,
 			ingredients =
@@ -259,7 +228,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-syn-gas-from-methane-gas",
-			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			categories = {"chemistry"},
 			enabled = false,
 			energy_required = 2,
 			ingredients =
@@ -290,7 +260,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-petroleum-gas-cracking",
-			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			categories = {"chemistry"},
 			enabled = false,
 			energy_required = 1,
 			ingredients =
@@ -327,7 +298,8 @@ if bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-advanced-oil-processing-with-gas",
-			category = "oil-processing",
+			--category = "oil-processing",
+			categories = {"oil-processing"},
 			enabled = false,
 			energy_required = 5,
 			ingredients =
@@ -356,7 +328,8 @@ if bc_fc_syn_gas_from_wood > 0 then
 		{
 			type = "recipe",
 			name = "bc-syn-gas-from-wood",
-			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+			--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+			categories = {"chemistry"},
 			enabled = false,
 			energy_required = bc_fc_syn_gas_from_wood_energy,
 			ingredients =

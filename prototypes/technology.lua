@@ -1,7 +1,6 @@
 -- Basic Chemistry Mod Settings
 local bc_natural_gas = settings.startup["bc-natural-gas"].value
 local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
-local bc_petroleum_gas_from_syn_gas = settings.startup["bc-petroleum-gas-from-syn-gas"].value
 
 -- Basic Chemistry Full Control Mod Settings
 local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
@@ -11,10 +10,6 @@ if not mods["aai-industry"] then
 	table.insert(data.raw.technology["electronics"].effects, {recipe = "bc-synthetic-plate", type = "unlock-recipe"})
 	table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-chemical-reactor", type = "unlock-recipe"})
 	table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-syn-gas", type = "unlock-recipe"})
-end
-
-if bc_petroleum_gas_from_syn_gas then
-	table.insert(data.raw.technology["coal-liquefaction"].effects, {recipe = "bc-petroleum-gas-from-syn-gas", type = "unlock-recipe"})
 end
 
 if bc_natural_gas or bc_natural_gas_from_oil then

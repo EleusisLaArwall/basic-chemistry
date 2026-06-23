@@ -2,10 +2,6 @@ require ("__base__.prototypes.entity.pipecovers")
 
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
-local bc_craft_category = {"chemistry"}
-if mods["space-age"] then
-	bc_craft_category = {"organic-or-chemistry", "chemistry-or-cryogenics", "chemistry"}
-end
 
 data:extend(
 {
@@ -28,6 +24,7 @@ data:extend(
 		drawing_box_vertical_extension = 0.4,
 		module_slots = 0,
 		allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+		use_mirroring = true,
 		graphics_set =
 		{
 			animation = make_4way_animation_from_spritesheet({ layers =
@@ -187,7 +184,7 @@ data:extend(
 			emissions_per_minute = { pollution = 6 }
 		},
 		energy_usage = "90kW",
-		crafting_categories = bc_craft_category,
+		crafting_categories = {"chemistry"},
 		fluid_boxes =
 		{
 			{
