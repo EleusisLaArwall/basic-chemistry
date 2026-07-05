@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 05. 07. 2026
+  Bugfixes:
+    - Fixed compatibility error with Scrappy Chemistry
+  Info:
+    - Compatibility with Scrappy Chemistry is currently very limited
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 23. 06. 2026
   Features:
