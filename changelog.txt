@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 10. 07. 2026
+  Bugfixes:
+    - Fixed compatibility error with Scrappy Industry
+  Minor Features:
+    - Added optional Petroleum gas from methane gas recipe (fully customizable with FC)
+    - Added Solid fuel from methane gas recipe
+    - Added "force methane compatibility" option to FC (highly experimental, use at your own risk!)
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: 05. 07. 2026
   Bugfixes:
