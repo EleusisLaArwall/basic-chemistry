@@ -81,6 +81,13 @@ data:extend({
 data:extend({
 --mod-recipes
 	{
+		type = "bool-setting",
+		name = "bc-fc-overwrite-methane-gas-name",
+		setting_type = "startup",
+		default_value = false,
+		order = "x[settings]-fc-k[experimental]-k[overwrite-methane-gas-name]"
+	},
+	{
 		type = "int-setting",
 		name = "bc-fc-syn-gas-coal",
 		setting_type = "startup",

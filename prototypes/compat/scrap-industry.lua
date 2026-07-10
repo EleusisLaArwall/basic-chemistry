@@ -33,7 +33,8 @@ if settings.startup["bc-si-synthetic-scrap"].value then
 				{icon="__basic-chemistry__/graphics/icons/synthetic-scrap.png", shift={-12, -12}, scale=0.4},
 				{icon="__basic-chemistry__/graphics/icons/synthetic-plate.png", draw_background=true}
 			},
-			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+--			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+			categories = {"chemistry"},
 			subgroup = "production-scrap",
 			order = "d[crafting]-d[g-synthetic]",
 			enabled = false,

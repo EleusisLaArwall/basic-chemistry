@@ -17,6 +17,9 @@ if mods["space-age"] then
 	if bc_fc_syn_gas_from_wood > 0 then
 		table.insert(data.raw.recipe["bc-syn-gas-from-wood"].categories, "cryogenics")
 	end
+	if mods["scrap-chemistry"] then
+		table.insert(data.raw.recipe["bc-synthetic-plate-from-scrap"].categories, "cryogenics")
+	end
 	-- FULGORA
 	table.insert(data.raw["lightning-attractor"]["fulgoran-ruin-attractor"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 4})
 	table.insert(data.raw["simple-entity"]["fulgoran-ruin-small"].minable.results, {type = "item", name = "bc-synthetic-plate", amount = 2})

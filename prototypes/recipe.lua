@@ -21,6 +21,7 @@ local bc_fc_petroleum_gas_from_methane_gas_energy = settings.startup["bc-fc-petr
 local bc_fc_petroleum_gas_from_methane_gas_methane_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-methane-gas"].value
 local bc_fc_petroleum_gas_from_methane_gas_syn_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-syn-gas"].value
 local bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-petroleum-gas"].value
+local bc_fc_overwrite_methane_gas_name = settings.startup["bc-fc-overwrite-methane-gas-name"].value
 
 -- Default values for Full Control overwrite Mod Setting
 if settings.startup["bc-fc-overwrite"].value then
@@ -46,8 +47,10 @@ end
 local bc_methane_gas_name = "bc-methane-gas"
 local bc_fluid_box_methane_gas = 2
 local bc_fluid_box_petroleum_gas = 3
-if mods["scrap-chemistry"] then
+if bc_fc_overwrite_methane_gas_name or mods["scrap-chemistry"] then
 	bc_methane_gas_name = "methane"
+end
+if mods["scrap-chemistry"] then
 	bc_fluid_box_methane_gas = 3
 	bc_fluid_box_petroleum_gas = 1
 end

@@ -7,7 +7,6 @@ require("prototypes.resources")
 require("prototypes.technology")
 require("prototypes.virtual-signal")
 
-require("prototypes.compat.space-age")
 require("prototypes.compat.any-planet-start")
 -- Conditional require(…) because data.util can only be required if mod is active.
 -- Conditional require(…) for mods[…] is fine according to devs on Discord.
@@ -27,3 +26,4 @@ end
 -- if mods["scrap-chemistry"] then
 -- 	require("prototypes.compat.scrap-chemistry")
 -- end
+require("prototypes.compat.space-age")
