@@ -1,6 +1,7 @@
 -- Basic Chemistry Mod Settings
 local bc_natural_gas = settings.startup["bc-natural-gas"].value
 local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
+local bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-gas-from-methane-gas"].value
 
 -- Basic Chemistry Full Control Mod Settings
 local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
@@ -19,6 +20,9 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 	table.insert(data.raw.technology["oil-gathering"].effects, {recipe = "bc-syn-gas-from-methane-gas", type = "unlock-recipe"})
 	table.insert(data.raw.technology["advanced-oil-processing"].effects, {recipe = "bc-adv-natural-gas-processing", type = "unlock-recipe"})
 	table.insert(data.raw.technology["advanced-oil-processing"].effects, {recipe = "bc-petroleum-gas-cracking", type = "unlock-recipe"})
+	if bc_petroleum_gas_from_methane_gas then
+		table.insert(data.raw.technology["advanced-oil-processing"].effects, {recipe = "bc-petroleum-gas-from-methane-gas", type = "unlock-recipe"})
+	end
 end
 
 if bc_natural_gas_from_oil then

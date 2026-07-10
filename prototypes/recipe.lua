@@ -2,6 +2,7 @@
 local bc_natural_gas = settings.startup["bc-natural-gas"].value
 local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
 local bc_extractor_pump = settings.startup["bc-extractor-pump"].value
+local bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-gas-from-methane-gas"].value
 
 -- Basic Chemistry Full Control Mod Settings
 local bc_fc_syn_gas_energy = settings.startup["bc-fc-syn-gas-energy"].value
@@ -16,6 +17,10 @@ local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].valu
 local bc_fc_syn_gas_from_wood_water = settings.startup["bc-fc-syn-gas-from-wood-water"].value
 local bc_fc_syn_gas_from_wood_syn_gas = settings.startup["bc-fc-syn-gas-from-wood-syn-gas"].value
 local bc_fc_syn_gas_from_wood_energy = settings.startup["bc-fc-syn-gas-from-wood-energy"].value
+local bc_fc_petroleum_gas_from_methane_gas_energy = settings.startup["bc-fc-petroleum-gas-from-methane-gas-energy"].value
+local bc_fc_petroleum_gas_from_methane_gas_methane_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-methane-gas"].value
+local bc_fc_petroleum_gas_from_methane_gas_syn_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-syn-gas"].value
+local bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-petroleum-gas"].value
 
 -- Default values for Full Control overwrite Mod Setting
 if settings.startup["bc-fc-overwrite"].value then
@@ -31,6 +36,10 @@ if settings.startup["bc-fc-overwrite"].value then
 	bc_fc_syn_gas_from_wood_water = 10
 	bc_fc_syn_gas_from_wood_syn_gas = 15
 	bc_fc_syn_gas_from_wood_energy = 2
+	bc_fc_petroleum_gas_from_methane_gas_energy = 2
+	bc_fc_petroleum_gas_from_methane_gas_methane_gas = 30
+	bc_fc_petroleum_gas_from_methane_gas_syn_gas = 10
+	bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = 10
 end
 
 -- Variables for other mods
@@ -290,6 +299,41 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		}
 	}
 	)
+	if bc_petroleum_gas_from_methane_gas then
+		data:extend(
+		{
+			{
+				type = "recipe",
+				name = "bc-petroleum-gas-from-methane-gas",
+				categories = {"chemistry"},
+				enabled = false,
+				energy_required = bc_fc_petroleum_gas_from_methane_gas_energy,
+				ingredients =
+				{
+					{type = "fluid", name = bc_methane_gas_name, amount = bc_fc_petroleum_gas_from_methane_gas_methane_gas},
+					{type = "fluid", name = "bc-syn-gas", amount = bc_fc_petroleum_gas_from_methane_gas_syn_gas}
+				},
+				results =
+				{
+					{type = "fluid", name = "petroleum-gas", amount = bc_fc_petroleum_gas_from_methane_gas_petroleum_gas}
+				},
+				allow_productivity = true,
+				icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-methane-gas.png",
+				subgroup = "fluid-recipes",
+				order = "b[fluid-chemistry]-b[v-petroleum-gas-from-methane-gas]",
+				-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
+				crafting_machine_tint =
+				{
+					primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+					secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+		--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
+					tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+					quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+				}
+			}
+		}
+		)
+	end
 end
 
 if bc_natural_gas_from_oil then

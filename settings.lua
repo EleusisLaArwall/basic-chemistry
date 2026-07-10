@@ -16,13 +16,6 @@ data:extend({
 		default_value = true,
 		order = "e[recipe]-d"
 	},
--- 	{
--- 		type = "bool-setting",
--- 		name = "bc-petroleum-gas-from-syn-gas",
--- 		setting_type = "startup",
--- 		default_value = false,
--- 		order = "e[recipe]-e"
--- 	},
 	{
 		type = "bool-setting",
 		name = "bc-natural-gas",
@@ -36,6 +29,14 @@ data:extend({
 		setting_type = "startup",
 		default_value = true,
 		order = "e[recipe]-f-e"
+	},
+	{
+		type = "bool-setting",
+		name = "bc-petroleum-gas-from-methane-gas",
+		setting_type = "startup",
+--		hidden = bc_full_control,
+		default_value = false,
+		order = "e[recipe]-f-f"
 	},
 -- Moved syn-gas from wood and rail recipe to FC
 -- 	{
@@ -158,6 +159,46 @@ data:extend({
 		minimum_value = 0.1,
 		maximum_value = 255,
 		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-d[methane-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-e[syn-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-petroleum-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-g[petroleum-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = 2,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-j[energy]"
 	},
 --base-recipe-changes
 	{
