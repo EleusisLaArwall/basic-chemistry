@@ -2,6 +2,7 @@ if mods["space-age"] then
 	-- Basic Chemistry Mod Settings
 	local bc_natural_gas = settings.startup["bc-natural-gas"].value
 	local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
+	local bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-gas-from-methane-gas"].value
 	-- Basic Chemistry Full Control Mod Settings
 	local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
 	-- recipe categories
@@ -13,11 +14,14 @@ if mods["space-age"] then
 		table.insert(data.raw.recipe["bc-advanced-natural-gas-processing-legacy"].categories, "cryogenics")
 		table.insert(data.raw.recipe["bc-syn-gas-from-methane-gas"].categories, "cryogenics")
 		table.insert(data.raw.recipe["bc-petroleum-gas-cracking"].categories, "cryogenics")
+		if bc_petroleum_gas_from_methane_gas then
+			table.insert(data.raw.recipe["bc-petroleum-gas-from-methane-gas"].categories, "cryogenics")
+		end
 	end
 	if bc_fc_syn_gas_from_wood > 0 then
 		table.insert(data.raw.recipe["bc-syn-gas-from-wood"].categories, "cryogenics")
 	end
-	if mods["scrap-chemistry"] then
+	if mods["scrap-industry"] then
 		table.insert(data.raw.recipe["bc-synthetic-plate-from-scrap"].categories, "cryogenics")
 	end
 	-- FULGORA
