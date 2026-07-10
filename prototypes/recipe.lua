@@ -299,6 +299,35 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
 				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
+		},
+		{
+			type = "recipe",
+			name = "bc-solid-fuel-from-methane-gas",
+			categories = {"chemistry"},
+			enabled = false,
+			auto_recycle = false,
+			energy_required = 1,
+			ingredients =
+			{
+				{type = "fluid", name = bc_methane_gas_name, amount = 20}
+			},
+			results =
+			{
+				{type = "item", name = "solid-fuel", amount = 1}
+			},
+			allow_productivity = true,
+			icon = "__basic-chemistry__/graphics/icons/solid-fuel-from-methane-gas.png",
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-c[solid-fuel-from-methane-gas]",
+			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
+			crafting_machine_tint =
+			{
+				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
+				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+			}
 		}
 	}
 	)
