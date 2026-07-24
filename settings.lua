@@ -1,4 +1,4 @@
-local bc_full_control = not mods["basic-chemistry-full-control"]
+local bc_full_control = not mods["basic-chemistry-full-control"] and not mods["full-control"]
 
 data:extend({
 	{
