@@ -1,6 +1,6 @@
 {
 	"name": "basic-chemistry",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"title": "Basic Chemistry",
 	"author": "EleusisLaArwall",
 	"homepage": "",
@@ -10,6 +10,7 @@
 		"base >= 1.0",
 		"? space-age",
 		"? basic-chemistry-full-control",
+		"? full-control",
 		"? aai-industry",
 		"? crushing-industry",
 		"? scrap-industry",
