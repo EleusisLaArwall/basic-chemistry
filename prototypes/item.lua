@@ -11,6 +11,9 @@ data:extend(
 		icon_size = 64,
 		subgroup = "raw-material",
 		order = "b[chemistry]-a[synthetic-plate]",
+		inventory_move_sound = item_sounds.plastic_inventory_move,
+		pick_sound = item_sounds.plastic_inventory_pickup,
+		drop_sound = item_sounds.plastic_inventory_move,
 		stack_size = 100,
 		weight = 0.5 * kg
 	},
