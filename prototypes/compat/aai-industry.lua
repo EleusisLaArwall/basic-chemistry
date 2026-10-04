@@ -1,13 +1,16 @@
 local util = require("__aai-industry__.data-util")
+
+-- Basic Chemistry Mod Settings
+local bc_settings = require ("bc-settings")
 local resource_autoplace = require("resource-autoplace");
 
-if settings.startup["bc-aai-remove-electronic-circuit-wood"].value then
+if bc_settings.bc_aai_remove_electronic_circuit_wood then
 -- remove "electric-circuit from wood" recipe (provided by aai-industry)
 --	data.raw.recipe["electronic-circuit-wood"] = nil
 	data.raw.recipe["electronic-circuit-wood"].hidden = true
 end
 
-if settings.startup["bc-aai-remove-stone-tablet"].value then
+if bc_settings.bc_aai_remove_stone_tablet then
 -- remove stone-tablet recipe (provided by aai-industry)
 --	data.raw.recipe["stone-tablet"] = nil
 	data.raw.recipe["stone-tablet"].hidden = true
@@ -34,7 +37,7 @@ util.replace_or_add_ingredient(data.raw.recipe["repair-pack"], "bc-synthetic-pla
 -- Synthetic plate is ingredient of small electric motor
 util.replace_or_add_ingredient(data.raw.recipe["electric-motor"], "bc-synthetic-plate", "bc-synthetic-plate", 1)
 -- If "more glass usage" is enabled, advanced circuit (red) requires glass. Also train-stuff, car and display require glass
-if settings.startup["bc-aai-more-glass-usage"].value and not mods["Krastorio2"] then
+if bc_settings.bc_aai_more_glass_usage and not mods["Krastorio2"] then
 	util.replace_or_add_ingredient(data.raw.recipe["advanced-circuit"], "glass", "glass", 1)
 	util.replace_or_add_ingredient(data.raw.recipe["train-stop"], "glass", "glass", 2)
 	util.replace_or_add_ingredient(data.raw.recipe["rail-signal"], "glass", "glass", 1)

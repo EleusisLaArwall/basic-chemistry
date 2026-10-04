@@ -1,59 +1,5 @@
 -- Basic Chemistry Mod Settings
-local bc_natural_gas = settings.startup["bc-natural-gas"].value
-local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
-local bc_extractor_pump = settings.startup["bc-extractor-pump"].value
-local bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-gas-from-methane-gas"].value
-
--- Basic Chemistry Full Control Mod Settings
-local bc_fc_syn_gas_energy = settings.startup["bc-fc-syn-gas-energy"].value
-local bc_fc_syn_gas_coal = settings.startup["bc-fc-syn-gas-coal"].value
-local bc_fc_syn_gas_water = settings.startup["bc-fc-syn-gas-water"].value
-local bc_fc_syn_gas_syn_gas = settings.startup["bc-fc-syn-gas-syn-gas"].value
-local bc_fc_synthetic_plate_energy = settings.startup["bc-fc-synthetic-plate-energy"].value
-local bc_fc_synthetic_plate_water = settings.startup["bc-fc-synthetic-plate-water"].value
-local bc_fc_synthetic_plate_syn_gas = settings.startup["bc-fc-synthetic-plate-syn-gas"].value
-local bc_fc_synthetic_plate_synthetic_plate = settings.startup["bc-fc-synthetic-plate-synthetic-plate"].value
-local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
-local bc_fc_syn_gas_from_wood_water = settings.startup["bc-fc-syn-gas-from-wood-water"].value
-local bc_fc_syn_gas_from_wood_syn_gas = settings.startup["bc-fc-syn-gas-from-wood-syn-gas"].value
-local bc_fc_syn_gas_from_wood_energy = settings.startup["bc-fc-syn-gas-from-wood-energy"].value
-local bc_fc_petroleum_gas_from_methane_gas_energy = settings.startup["bc-fc-petroleum-gas-from-methane-gas-energy"].value
-local bc_fc_petroleum_gas_from_methane_gas_methane_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-methane-gas"].value
-local bc_fc_petroleum_gas_from_methane_gas_syn_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-syn-gas"].value
-local bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-petroleum-gas"].value
-local bc_fc_overwrite_methane_gas_name = settings.startup["bc-fc-overwrite-methane-gas-name"].value
-
--- Default values for Full Control overwrite Mod Setting
-if settings.startup["bc-fc-overwrite"].value then
-	bc_fc_syn_gas_energy = 2
-	bc_fc_syn_gas_coal = 1
-	bc_fc_syn_gas_water = 10
-	bc_fc_syn_gas_syn_gas = 15
-	bc_fc_synthetic_plate_energy = 1
-	bc_fc_synthetic_plate_water = 10
-	bc_fc_synthetic_plate_syn_gas = 20
-	bc_fc_synthetic_plate_synthetic_plate = 2
-	bc_fc_syn_gas_from_wood = 0
-	bc_fc_syn_gas_from_wood_water = 10
-	bc_fc_syn_gas_from_wood_syn_gas = 15
-	bc_fc_syn_gas_from_wood_energy = 2
-	bc_fc_petroleum_gas_from_methane_gas_energy = 2
-	bc_fc_petroleum_gas_from_methane_gas_methane_gas = 30
-	bc_fc_petroleum_gas_from_methane_gas_syn_gas = 10
-	bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = 10
-end
-
--- Variables for other mods
-local bc_methane_gas_name = "bc-methane-gas"
-local bc_fluid_box_methane_gas = 2
-local bc_fluid_box_petroleum_gas = 3
-if bc_fc_overwrite_methane_gas_name or mods["scrap-chemistry"] then
-	bc_methane_gas_name = "methane"
-end
-if mods["scrap-chemistry"] then
-	bc_fluid_box_methane_gas = 3
-	bc_fluid_box_petroleum_gas = 1
-end
+local bc_settings = require ("bc-settings")
 
 data:extend(
 {
@@ -63,15 +9,15 @@ data:extend(
 		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		categories = {"chemistry"},
 		enabled = false,
-		energy_required = bc_fc_syn_gas_energy,--2,
+		energy_required = bc_settings.bc_fc_syn_gas_energy,--2,
 		ingredients =
 		{
-			{type="item", name="coal", amount=bc_fc_syn_gas_coal},
-			{type = "fluid", name = "water", amount = bc_fc_syn_gas_water}
+			{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+			{type = "fluid", name = "water", amount = bc_settings.bc_fc_syn_gas_water}
 		},
 		results =
 		{
-			{type="fluid", name="bc-syn-gas", amount=bc_fc_syn_gas_syn_gas}
+			{type="fluid", name="bc-syn-gas", amount=bc_settings.bc_fc_syn_gas_syn_gas}
 		},
 		allow_productivity = true,
 		main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
@@ -91,15 +37,15 @@ data:extend(
 		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		categories = {"chemistry"},
 		enabled = false,
-		energy_required = bc_fc_synthetic_plate_energy,--1,
+		energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
 		ingredients =
 		{
-			{type = "fluid", name = "water", amount = bc_fc_synthetic_plate_water},
-			{type = "fluid", name = "bc-syn-gas", amount = bc_fc_synthetic_plate_syn_gas}
+			{type = "fluid", name = "water", amount = bc_settings.bc_fc_synthetic_plate_water},
+			{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_synthetic_plate_syn_gas}
 		},
 		results =
 		{
-			{type = "item", name = "bc-synthetic-plate", amount = bc_fc_synthetic_plate_synthetic_plate}
+			{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
 		},
 		allow_productivity = true,
 		crafting_machine_tint =
@@ -128,7 +74,7 @@ data:extend(
 }
 )
 
-if bc_natural_gas or bc_natural_gas_from_oil then
+if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{
@@ -206,7 +152,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			},
 			results =
 			{
-				{type = "fluid", name = bc_methane_gas_name, amount = 75, fluidbox_index = bc_fluid_box_methane_gas}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 75, fluidbox_index = bc_settings.bc_fluid_box_methane_gas}
 			},
 			allow_productivity = true,
 			main_product = "",
@@ -228,8 +174,8 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			},
 			results =
 			{
-				{type = "fluid", name = bc_methane_gas_name, amount = 100, fluidbox_index = bc_fluid_box_methane_gas},
-				{type = "fluid", name = "petroleum-gas", amount = 30, fluidbox_index = bc_fluid_box_petroleum_gas},
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 100, fluidbox_index = bc_settings.bc_fluid_box_methane_gas},
+				{type = "fluid", name = "petroleum-gas", amount = 30, fluidbox_index = bc_settings.bc_fluid_box_petroleum_gas},
 			},
 			allow_productivity = true,
 			main_product = "",
@@ -247,7 +193,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			ingredients =
 			{
 				{type = "fluid", name = "water", amount = 20},
-				{type = "fluid", name = bc_methane_gas_name, amount = 30}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 30}
 			},
 			results =
 			{
@@ -283,7 +229,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			},
 			results =
 			{
-				{type = "fluid", name = bc_methane_gas_name, amount = 10}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 10}
 			},
 			allow_productivity = true,
 			main_product = "",
@@ -309,7 +255,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 			energy_required = 1,
 			ingredients =
 			{
-				{type = "fluid", name = bc_methane_gas_name, amount = 20}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 20}
 			},
 			results =
 			{
@@ -331,7 +277,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 		}
 	}
 	)
-	if bc_petroleum_gas_from_methane_gas then
+	if bc_settings.bc_petroleum_gas_from_methane_gas then
 		data:extend(
 		{
 			{
@@ -339,15 +285,15 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 				name = "bc-petroleum-gas-from-methane-gas",
 				categories = {"chemistry"},
 				enabled = false,
-				energy_required = bc_fc_petroleum_gas_from_methane_gas_energy,
+				energy_required = bc_settings.bc_fc_petroleum_gas_from_methane_gas_energy,
 				ingredients =
 				{
-					{type = "fluid", name = bc_methane_gas_name, amount = bc_fc_petroleum_gas_from_methane_gas_methane_gas},
-					{type = "fluid", name = "bc-syn-gas", amount = bc_fc_petroleum_gas_from_methane_gas_syn_gas}
+					{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_petroleum_gas_from_methane_gas_methane_gas},
+					{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_petroleum_gas_from_methane_gas_syn_gas}
 				},
 				results =
 				{
-					{type = "fluid", name = "petroleum-gas", amount = bc_fc_petroleum_gas_from_methane_gas_petroleum_gas}
+					{type = "fluid", name = "petroleum-gas", amount = bc_settings.bc_fc_petroleum_gas_from_methane_gas_petroleum_gas}
 				},
 				allow_productivity = true,
 				icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-methane-gas.png",
@@ -368,7 +314,7 @@ if bc_natural_gas or bc_natural_gas_from_oil then
 	end
 end
 
-if bc_natural_gas_from_oil then
+if bc_settings.bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{
@@ -398,7 +344,7 @@ if bc_natural_gas_from_oil then
 	)
 end
 
-if bc_fc_syn_gas_from_wood > 0 then
+if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 	data:extend(
 	{
 		{
@@ -407,15 +353,15 @@ if bc_fc_syn_gas_from_wood > 0 then
 			--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 			categories = {"chemistry"},
 			enabled = false,
-			energy_required = bc_fc_syn_gas_from_wood_energy,
+			energy_required = bc_settings.bc_fc_syn_gas_from_wood_energy,
 			ingredients =
 			{
-				{type = "item", name = "wood", amount = bc_fc_syn_gas_from_wood},
-				{type = "fluid", name = "water", amount = bc_fc_syn_gas_from_wood_water}
+				{type = "item", name = "wood", amount = bc_settings.bc_fc_syn_gas_from_wood},
+				{type = "fluid", name = "water", amount = bc_settings.bc_fc_syn_gas_from_wood_water}
 			},
 			results =
 			{
-				{type = "fluid", name = "bc-syn-gas", amount = bc_fc_syn_gas_from_wood_syn_gas}
+				{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_syn_gas_from_wood_syn_gas}
 			},
 			allow_productivity = true,
 			icons = {
@@ -424,6 +370,7 @@ if bc_fc_syn_gas_from_wood > 0 then
 			},
 			subgroup = "fluid-recipes",
 			order = "a[rng-processing]-a[b-syn-gas]",
+			factoriopedia_alternative = "bc-syn-gas",
 			crafting_machine_tint =
 			{
 				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
@@ -437,7 +384,7 @@ if bc_fc_syn_gas_from_wood > 0 then
 end
 
 -- Extractor-pump - RECIPE
-if bc_extractor_pump then
+if bc_settings.bc_extractor_pump then
 	local extractor_pump_recipe = table.deepcopy(data.raw["recipe"]["pumpjack"])
 	extractor_pump_recipe.name = "bc-extractor-pump"
 	extractor_pump_recipe.ingredients = {

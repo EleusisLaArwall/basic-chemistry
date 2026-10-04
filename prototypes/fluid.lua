@@ -1,6 +1,7 @@
 -- Basic Chemistry Mod Settings
-local bc_natural_gas = settings.startup["bc-natural-gas"].value
-local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
+local bc_settings = require ("bc-settings")
+--local bc_natural_gas = settings.startup["bc-natural-gas"].value
+--local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
 
 data:extend(
 {
@@ -21,7 +22,7 @@ data:extend(
 }
 )
 
-if bc_natural_gas or bc_natural_gas_from_oil then
+if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{

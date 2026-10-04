@@ -1,6 +1,7 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
+local bc_settings = require ("bc-settings")
 
-local synthetic_plate_icon = settings.startup["bc-synthetic-plate-icon"].value
+--local synthetic_plate_icon = settings.startup["bc-synthetic-plate-icon"].value
 
 data:extend(
 {
@@ -32,17 +33,17 @@ data:extend(
 }
 )
 
-if synthetic_plate_icon == "original" then
+if bc_settings.bc_synthetic_plate_icon == "original" then
 	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate.png"
-elseif synthetic_plate_icon == "saf" then
+elseif bc_settings.bc_synthetic_plate_icon == "saf" then
 	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-saf.png"
-elseif synthetic_plate_icon == "brown" then
+elseif bc_settings.bc_synthetic_plate_icon == "brown" then
 	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-brown.png"
-elseif synthetic_plate_icon == "white" then
+elseif bc_settings.bc_synthetic_plate_icon == "white" then
 	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-white.png"
---elseif synthetic_plate_icon == "bar-brown" then
+--elseif bc_settings.bc_synthetic_plate_icon == "bar-brown" then
 --	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-bar-brown.png"
-elseif synthetic_plate_icon == "bar-white" then
+elseif bc_settings.bc_synthetic_plate_icon == "bar-white" then
 	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-bar-white.png"
 --else
 --	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate.png"

@@ -2,7 +2,10 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 -- FDSL is dependency of crushing industry
 local frep = require("__fdsl__.lib.recipe")
 
-if settings.startup["bc-si-synthetic-scrap"].value then
+-- Basic Chemistry Mod Settings
+local bc_settings = require ("bc-settings")
+
+if bc_settings.bc_si_synthetic_scrap then
 	ScrapIndustry.items["bc-synthetic-plate"] = {scrap="bc-synthetic-scrap", scale=ScrapIndustry.COMMON, failrate=0.02}
 	ScrapIndustry.products["bc-synthetic-scrap"] = {priority=2}
 
@@ -62,7 +65,7 @@ if settings.startup["bc-si-synthetic-scrap"].value then
 end
 
 -- Make changes only IF crushing industry's mod setting has enabled plastic bits AND basic chemistry's mod setting has enabled syngas for plastic bar
-if settings.startup["scrap-industry-plastic"].value and settings.startup["bc-syn-gas-plastic-bar"].value then
+if settings.startup["scrap-industry-plastic"].value and bc_settings.bc_syn_gas_plastic_bar then
 -- Add Syngas to Plastic-bar recyling recipe
 	frep.add_ingredient("plastic-bar-from-bits", {type="fluid", name="bc-syn-gas", amount=5})
 end

@@ -1,24 +1,21 @@
 if mods["space-age"] then
 	-- Basic Chemistry Mod Settings
-	local bc_natural_gas = settings.startup["bc-natural-gas"].value
-	local bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
-	local bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-gas-from-methane-gas"].value
-	-- Basic Chemistry Full Control Mod Settings
-	local bc_fc_syn_gas_from_wood = settings.startup["bc-fc-syn-gas-from-wood"].value
+	local bc_settings = require ("bc-settings")
+
 	-- recipe categories
 	table.insert(data.raw["assembling-machine"]["bc-chemical-reactor"].crafting_categories, "cryogenics")
 	table.insert(data.raw.recipe["bc-syn-gas"].categories, "cryogenics")
 	table.insert(data.raw.recipe["bc-synthetic-plate"].categories, "cryogenics")
-	if bc_natural_gas or bc_natural_gas_from_oil then
+	if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 		table.insert(data.raw.recipe["bc-basic-natural-gas-processing-legacy"].categories, "cryogenics")
 		table.insert(data.raw.recipe["bc-advanced-natural-gas-processing-legacy"].categories, "cryogenics")
 		table.insert(data.raw.recipe["bc-syn-gas-from-methane-gas"].categories, "cryogenics")
 		table.insert(data.raw.recipe["bc-petroleum-gas-cracking"].categories, "cryogenics")
-		if bc_petroleum_gas_from_methane_gas then
+		if bc_settings.bc_petroleum_gas_from_methane_gas then
 			table.insert(data.raw.recipe["bc-petroleum-gas-from-methane-gas"].categories, "cryogenics")
 		end
 	end
-	if bc_fc_syn_gas_from_wood > 0 then
+	if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 		table.insert(data.raw.recipe["bc-syn-gas-from-wood"].categories, "cryogenics")
 	end
 	if mods["scrap-industry"] then
