@@ -6,14 +6,18 @@ local bc_settings = require ("bc-settings")
 
 --local bc_fc_syn_gas_coal = settings.startup["bc-fc-syn-gas-coal"].value
 
-if settings.startup["bc-fc-overwrite"].value then
-	bc_settings.bc_fc_syn_gas_coal = 1
-end
+--if settings.startup["bc-fc-overwrite"].value then
+--	bc_settings.bc_fc_syn_gas_coal = 1
+--end
 
 -- Make changes only if crushing industry's mod setting has enabled crushing coal
 if settings.startup["crushing-industry-coal"].value then
 -- Replace coal with crushed coal.
-	frep.replace_ingredient("bc-syn-gas", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
+	if bc_settings.bc_simple_mode then
+		frep.replace_ingredient("bc-synthetic-plate", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
+	else
+		frep.replace_ingredient("bc-syn-gas", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
+	end
 end
 
 -- If "more glass usage" is enabled, advanced circuit (red) requires glass. Also train-stuff, car and display require glass

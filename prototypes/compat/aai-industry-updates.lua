@@ -5,7 +5,14 @@ util.tech_lock_recipes(
 		"pipe",
 		"burner-offshore-pump",
 		"bc-chemical-reactor",
-		"bc-syn-gas",
 		"bc-synthetic-plate"
 	}
 )
+
+if not bc_settings.bc_simple_mode then
+	util.tech_lock_recipes(
+		"burner-mechanics", {
+			"bc-syn-gas"
+		}
+	)
+end

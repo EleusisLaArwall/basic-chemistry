@@ -1,3 +1,6 @@
+-- FDSL is dependency of crushing-industry
+local frep = require("__fdsl__.lib.recipe")
+
 -- Basic Chemistry Mod Settings
 local bc_settings = require ("bc-settings")
 
@@ -33,4 +36,13 @@ if bc_settings.bc_fc_rail > 0 then
 end
 if bc_settings.bc_fc_assembling_machine_1 > 0 then
 	table.insert(data.raw["recipe"]["assembling-machine-1"].ingredients, {type="item", name="bc-synthetic-plate", amount=bc_settings.bc_fc_assembling_machine_1})
+end
+
+if mods["fdsl"] then
+	if bc_settings.bc_electronic_circuit_ing_iron_plate_remove then
+		frep.remove_ingredient("electronic-circuit", "iron-plate")
+	end
+	if bc_settings.bc_plastic_bar_ing_coal_remove then
+		frep.remove_ingredient("plastic-bar", "coal")
+	end
 end

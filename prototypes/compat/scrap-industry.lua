@@ -48,8 +48,7 @@ if bc_settings.bc_si_synthetic_scrap then
 			hide_from_player_crafting = true,
 			energy_required = 2,
 			ingredients = {
-				{type="item", name="bc-synthetic-scrap", amount= 3},
-				{type="fluid", name="bc-syn-gas", amount=10}
+				{type="item", name="bc-synthetic-scrap", amount= 3}
 			},
 			results = {{type="item", name="bc-synthetic-plate", amount=2}},
 			crafting_machine_tint = {
@@ -62,6 +61,10 @@ if bc_settings.bc_si_synthetic_scrap then
 		}
 	}
 	)
+end
+
+if not bc_settings.bc_simple_mode then
+	frep.add_ingredient("bc-synthetic-plate-from-scrap", {type="fluid", name="bc-syn-gas", amount=10})
 end
 
 -- Make changes only IF crushing industry's mod setting has enabled plastic bits AND basic chemistry's mod setting has enabled syngas for plastic bar

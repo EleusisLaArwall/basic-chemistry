@@ -5,60 +5,6 @@ data:extend(
 {
 	{
 		type = "recipe",
-		name = "bc-syn-gas",
-		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
-		categories = {"chemistry"},
-		enabled = false,
-		energy_required = bc_settings.bc_fc_syn_gas_energy,--2,
-		ingredients =
-		{
-			{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
-			{type = "fluid", name = "water", amount = bc_settings.bc_fc_syn_gas_water}
-		},
-		results =
-		{
-			{type="fluid", name="bc-syn-gas", amount=bc_settings.bc_fc_syn_gas_syn_gas}
-		},
-		allow_productivity = true,
-		main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
-		subgroup = "fluid-recipes",
-		order = "a[rng-processing]-a[a-syn-gas]",
-		crafting_machine_tint =
-		{
-			primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-			secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
-			tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
-			quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
-		}
-	},
-	{
-		type = "recipe",
-		name = "bc-synthetic-plate",
-		--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
-		categories = {"chemistry"},
-		enabled = false,
-		energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
-		ingredients =
-		{
-			{type = "fluid", name = "water", amount = bc_settings.bc_fc_synthetic_plate_water},
-			{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_synthetic_plate_syn_gas}
-		},
-		results =
-		{
-			{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
-		},
-		allow_productivity = true,
-		crafting_machine_tint =
-		{
-			primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
-			secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
---			tertiary = {r = 1.00, g = 0.88, b = 1.00, a = 1.000}, --	#FFE1FF	thistle1
-			tertiary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-			quaternary = {r = 0.51, g = 0.40, b = 0.53, a = 1.000},--	#816687	eggplant
-		}
-	},
-	{
-		type = "recipe",
 		name = "bc-chemical-reactor",
 		energy_required = 1,
 		enabled = false,
@@ -73,6 +19,94 @@ data:extend(
 	}
 }
 )
+
+if bc_settings.bc_simple_mode then
+	data:extend(
+	{
+		{
+			type = "recipe",
+			name = "bc-synthetic-plate",
+--			localised_name = {"recipe-name.bc-synthetic-plate"},
+			categories = {"chemistry"},
+			enabled = false,
+			energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
+			ingredients =
+			{
+				{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_synthetic_plate_water, minimum_temperature = bc_settings.bc_syngas_ing_lqd_min_temp}
+			},
+			results =
+			{
+				{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
+			},
+			allow_productivity = true,
+			crafting_machine_tint =
+			{
+				primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+				secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
+				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
+			}
+		}
+	}
+	)
+else
+	data:extend(
+	{
+		{
+			type = "recipe",
+			name = "bc-syn-gas",
+			categories = {"chemistry"},
+			enabled = false,
+			energy_required = bc_settings.bc_fc_syn_gas_energy,--2,
+			ingredients =
+			{
+				{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_syn_gas_water, minimum_temperature = bc_settings.bc_syngas_ing_lqd_min_temp}
+			},
+			results =
+			{
+				{type="fluid", name="bc-syn-gas", amount=bc_settings.bc_fc_syn_gas_syn_gas}
+			},
+			allow_productivity = true,
+			main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[a-syn-gas]",
+			crafting_machine_tint =
+			{
+				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+				secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
+				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
+			}
+		},
+		{
+			type = "recipe",
+			name = "bc-synthetic-plate",
+			categories = {"chemistry"},
+			enabled = false,
+			energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
+			ingredients =
+			{
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_synthetic_plate_water, minimum_temperature = bc_settings.bc_syngas_ing_lqd_min_temp},
+				{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_synthetic_plate_syn_gas}
+			},
+			results =
+			{
+				{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
+			},
+			allow_productivity = true,
+			crafting_machine_tint =
+			{
+				primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+				secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
+				tertiary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+				quaternary = {r = 0.51, g = 0.40, b = 0.53, a = 1.000},--	#816687	eggplant
+			}
+		}
+	}
+	)
+end
 
 if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 	data:extend(
@@ -192,7 +226,7 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			energy_required = 2,
 			ingredients =
 			{
-				{type = "fluid", name = "water", amount = 20},
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = 20},
 				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 30}
 			},
 			results =
@@ -357,7 +391,7 @@ if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 			ingredients =
 			{
 				{type = "item", name = "wood", amount = bc_settings.bc_fc_syn_gas_from_wood},
-				{type = "fluid", name = "water", amount = bc_settings.bc_fc_syn_gas_from_wood_water}
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_syn_gas_from_wood_water}
 			},
 			results =
 			{

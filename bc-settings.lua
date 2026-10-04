@@ -10,7 +10,9 @@ if mods["scrap-chemistry"] then
 end
 
 -- Read Mod Settings
+bc_settings.bc_simple_mode = settings.startup["bc-simple-mode"].value
 bc_settings.bc_coal_amount = settings.startup["bc-coal-amount"].value
+bc_settings.bc_syngas_ing_lqd = settings.startup["bc-syngas-ing-lqd"].value
 bc_settings.bc_syn_gas_plastic_bar = settings.startup["bc-syn-gas-plastic-bar"].value
 bc_settings.bc_natural_gas = settings.startup["bc-natural-gas"].value
 bc_settings.bc_natural_gas_from_oil = settings.startup["bc-natural-gas-from-oil"].value
@@ -18,7 +20,17 @@ bc_settings.bc_petroleum_gas_from_methane_gas = settings.startup["bc-petroleum-g
 bc_settings.bc_extractor_pump = settings.startup["bc-extractor-pump"].value
 bc_settings.bc_synthetic_plate_icon = settings.startup["bc-synthetic-plate-icon"].value
 bc_settings.bc_fc_overwrite = settings.startup["bc-fc-overwrite"].value
--- = settings.startup[""].value
+--bc_settings. = settings.startup[""].value
+
+if mods["fdsl"] then
+	bc_settings.bc_electronic_circuit_ing_iron_plate_remove = settings.startup["bc-electronic-circuit-ing-iron-plate-remove"].value
+	bc_settings.bc_plastic_bar_ing_coal_remove = settings.startup["bc-plastic-bar-ing-coal-remove"].value
+end
+
+if bc_settings.bc_syngas_ing_lqd then
+	bc_settings.bc_syngas_ing_lqd_name = "steam"
+	bc_settings.bc_syngas_ing_lqd_min_temp = 165
+end
 
 -- Read Full Control Mod Settings (unless defaults is checked)
 if not bc_settings.bc_fc_overwrite then
@@ -60,6 +72,15 @@ if not bc_settings.bc_fc_overwrite then
 		bc_settings.bc_si_synthetic_scrap = settings.startup["bc-si-synthetic-scrap"].value
 	end
 --	 = settings.startup[""].value
+end
+
+if bc_settings.bc_simple_mode then
+	bc_settings.bc_syn_gas_plastic_bar = false
+	bc_settings.bc_natural_gas = false
+	bc_settings.bc_natural_gas_from_oil = false
+	bc_settings.bc_petroleum_gas_from_methane_gas = false
+	bc_settings.bc_fc_plastic_bar = 0
+	bc_settings.bc_fc_syn_gas_from_wood = 0
 end
 
 return bc_settings

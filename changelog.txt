@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 04. 10. 2026
+  Features:
+    - Changed the way Mod Settings are handled internally
+    - Added optional fdsl dependency (expands Mod Settings)
+    - Added Mod Setting to remove iron-plate ingredient from electronic-circuit recipe (requires fdsl)
+    - Added Mod Setting to remove coal ingredient from plastic-bar recipe (requires fdsl)
+    - Added Mod Setting to use steam instead of water
+    - Added Mod Setting for a simple mode (coal + water → syn-plate)
+    - Added High temperature Syngas recipe for SA (unlocked on Vulcanus)
+---------------------------------------------------------------------------------------------------
 Version: 0.2.3
 Date: 03. 10. 2026
   Info:

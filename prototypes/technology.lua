@@ -11,7 +11,9 @@ local bc_settings = require ("bc-settings")
 if not mods["aai-industry"] then
 	table.insert(data.raw.technology["electronics"].effects, {recipe = "bc-synthetic-plate", type = "unlock-recipe"})
 	table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-chemical-reactor", type = "unlock-recipe"})
-	table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-syn-gas", type = "unlock-recipe"})
+	if not bc_settings.bc_simple_mode then
+		table.insert(data.raw.technology["steam-power"].effects, {recipe = "bc-syn-gas", type = "unlock-recipe"})
+	end
 end
 
 if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then

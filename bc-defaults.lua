@@ -1,6 +1,10 @@
 local bc_defaults = {
 -- ================================================== General settings
+	bc_simple_mode = false,
 	bc_coal_amount = "default",
+	bc_syngas_ing_lqd = false,
+	bc_electronic_circuit_ing_iron_plate_remove = false,
+	bc_plastic_bar_ing_coal_remove = false,
 	bc_syn_gas_plastic_bar = true,
 	bc_natural_gas = true,
 	bc_natural_gas_from_oil = true,
@@ -45,6 +49,8 @@ local bc_defaults = {
 	bc_aai_more_glass_usage = false,
 	bc_si_synthetic_scrap = true,
 -- ================================================== non mod settings
+	bc_syngas_ing_lqd_name = "water",
+--	bc_syngas_ing_lqd_min_temp = 0,
 	bc_methane_gas_name = "bc-methane-gas",
 	bc_fluid_box_methane_gas = 2,
 	bc_fluid_box_petroleum_gas = 3,

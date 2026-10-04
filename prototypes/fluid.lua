@@ -22,7 +22,7 @@ data:extend(
 }
 )
 
-if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
+--if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 	data:extend(
 	{
 		{
@@ -55,4 +55,4 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 		}
 	}
 	)
-end
+--end

@@ -3,6 +3,13 @@ local bc_full_control = not mods["basic-chemistry-full-control"] and not mods["f
 
 data:extend({
 	{
+		type = "bool-setting",
+		name = "bc-simple-mode",
+		setting_type = "startup",
+		default_value = bc_defaults.bc_simple_mode,--true,
+		order = "c[mode]"
+	},
+	{
 		type = "string-setting",
 		name = "bc-coal-amount",
 		setting_type = "startup",
@@ -12,10 +19,17 @@ data:extend({
 	},
 	{
 		type = "bool-setting",
+		name = "bc-syngas-ing-lqd",
+		setting_type = "startup",
+		default_value = bc_defaults.bc_syngas_ing_lqd,--true,
+		order = "e[recipe]-c"
+	},
+	{
+		type = "bool-setting",
 		name = "bc-syn-gas-plastic-bar",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_syn_gas_plastic_bar,--true,
-		order = "e[recipe]-d"
+		order = "e[recipe]-e[plastic-bar]-g"
 	},
 	{
 		type = "bool-setting",
@@ -62,6 +76,25 @@ data:extend({
 		order = "v[setting]-f"
 	}
 })
+
+if mods["fdsl"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			name = "bc-electronic-circuit-ing-iron-plate-remove",
+			setting_type = "startup",
+			default_value = bc_defaults.bc_electronic_circuit_ing_iron_plate_remove,--false,
+			order = "e[recipe]-d[electronic-circuit]-d"
+		},
+		{
+			type = "bool-setting",
+			name = "bc-plastic-bar-ing-coal-remove",
+			setting_type = "startup",
+			default_value = bc_defaults.bc_plastic_bar_ing_coal_remove,--false,
+			order = "e[recipe]-e[plastic-bar]-d"
+		}
+	})
+end
 
 --Full Control Settings
 data:extend({
