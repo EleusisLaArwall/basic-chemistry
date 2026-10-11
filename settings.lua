@@ -22,51 +22,59 @@ data:extend({
 		name = "bc-syngas-ing-lqd",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_syngas_ing_lqd,--true,
-		order = "e[recipe]-c"
+		order = "i[recipe]-c"
 	},
 	{
 		type = "bool-setting",
 		name = "bc-syn-gas-plastic-bar",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_syn_gas_plastic_bar,--true,
-		order = "e[recipe]-e[plastic-bar]-g"
+		order = "i[recipe]-e[plastic-bar]-g"
 	},
 	{
 		type = "bool-setting",
 		name = "bc-natural-gas",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_natural_gas,--true,
-		order = "e[recipe]-f"
+		order = "i[recipe]-f"
 	},
 	{
 		type = "bool-setting",
 		name = "bc-natural-gas-from-oil",
 		setting_type = "startup",
-		default_value = bc_defaults.bc_natural_gas_from_oil,--true,
-		order = "e[recipe]-f-e"
-	},
-	{
-		type = "bool-setting",
-		name = "bc-petroleum-gas-from-methane-gas",
-		setting_type = "startup",
---		hidden = bc_full_control,
-		default_value = bc_defaults.bc_petroleum_gas_from_methane_gas,--false,
-		order = "e[recipe]-f-f"
+		default_value = bc_defaults.bc_natural_gas_from_oil,--false,
+		order = "i[recipe]-f-e"
 	},
 	{
 		type = "bool-setting",
 		name = "bc-extractor-pump",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_extractor_pump,--false,
-		order = "e[recipe]-m"
+		order = "i[recipe]-m"
+	},
+	{
+		type = "string-setting",
+		name = "bc-syn-gas-icon",
+		setting_type = "startup",
+		default_value = bc_defaults.bc_syn_gas_icon,
+		allowed_values = { "atoms", "cloud", "cloud-atoms", "classic"},
+		order = "f[visual]-c"
+	},
+	{
+		type = "string-setting",
+		name = "bc-methane-gas-icon",
+		setting_type = "startup",
+		default_value = bc_defaults.bc_methane_gas_icon,
+		allowed_values = { "atoms", "cloud", "cloud-atoms"},
+		order = "f[visual]-d"
 	},
 	{
 		type = "string-setting",
 		name = "bc-synthetic-plate-icon",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_synthetic_plate_icon,--"bar-brown",
-		allowed_values = { "original", "saf", "brown", "white", "bar-brown", "bar-white" },
-		order = "m[visual]"
+		allowed_values = {"bar-brown", "bar-white", "plate-classic", "plate-saf", "plate-brown", "plate-white"},
+		order = "f[visual]-f"
 	},
 	{
 		type = "bool-setting",
@@ -84,14 +92,14 @@ if mods["fdsl"] then
 			name = "bc-electronic-circuit-ing-iron-plate-remove",
 			setting_type = "startup",
 			default_value = bc_defaults.bc_electronic_circuit_ing_iron_plate_remove,--false,
-			order = "e[recipe]-d[electronic-circuit]-d"
+			order = "i[recipe]-d[electronic-circuit]-d"
 		},
 		{
 			type = "bool-setting",
 			name = "bc-plastic-bar-ing-coal-remove",
 			setting_type = "startup",
 			default_value = bc_defaults.bc_plastic_bar_ing_coal_remove,--false,
-			order = "e[recipe]-e[plastic-bar]-d"
+			order = "i[recipe]-e[plastic-bar]-d"
 		}
 	})
 end
@@ -107,127 +115,64 @@ data:extend({
 		default_value = bc_defaults.bc_fc_overwrite_methane_gas_name,--false,
 		order = "x[settings]-fc-k[experimental]-k[overwrite-methane-gas-name]"
 	},
+	--	colors
 	{
-		type = "int-setting",
-		name = "bc-fc-syn-gas-coal",
+		type = "color-setting",
+		name = "bc-fc-color-syn-gas-base",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_syn_gas_coal,--1,
-		minimum_value = 1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-d[coal]"
+		default_value = bc_defaults.bc_fc_color_syn_gas_base,
+		order = "x[settings]-fc-f[visual]-c[color]-c[syn-gas]-c[base]"
 	},
 	{
-		type = "int-setting",
-		name = "bc-fc-syn-gas-water",
+		type = "color-setting",
+		name = "bc-fc-color-syn-gas-flow",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_syn_gas_water,--10,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-e[water]"
+		default_value = bc_defaults.bc_fc_color_syn_gas_flow,
+		order = "x[settings]-fc-f[visual]-c[color]-c[syn-gas]-f[flow]"
 	},
 	{
-		type = "int-setting",
-		name = "bc-fc-syn-gas-syn-gas",
+		type = "color-setting",
+		name = "bc-fc-color-natural-gas-base",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_syn_gas_syn_gas,--15,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-g[syn-gas]"
+		default_value = bc_defaults.bc_fc_color_natural_gas_base,
+		order = "x[settings]-fc-f[visual]-c[color]-f[natural-gas]-c[base]"
 	},
 	{
-		type = "double-setting",
-		name = "bc-fc-syn-gas-energy",
+		type = "color-setting",
+		name = "bc-fc-color-natural-gas-flow",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_syn_gas_energy,--2,
-		minimum_value = 0.1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-c[syn-gas]-j[energy]"
+		default_value = bc_defaults.bc_fc_color_natural_gas_flow,
+		order = "x[settings]-fc-f[visual]-c[color]-f[natural-gas]-f[flow]"
 	},
 	{
-		type = "int-setting",
-		name = "bc-fc-synthetic-plate-water",
+		type = "color-setting",
+		name = "bc-fc-color-methane-gas-base",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_synthetic_plate_water,--10,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-d[water]"
+		default_value = bc_defaults.bc_fc_color_methane_gas_base,
+		order = "x[settings]-fc-f[visual]-c[color]-i[methane-gas]-c[base]"
 	},
 	{
-		type = "int-setting",
-		name = "bc-fc-synthetic-plate-syn-gas",
+		type = "color-setting",
+		name = "bc-fc-color-methane-gas-flow",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_synthetic_plate_syn_gas,--20,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-e[syn-gas]"
+		default_value = bc_defaults.bc_fc_color_methane_gas_flow,
+		order = "x[settings]-fc-f[visual]-c[color]-i[methane-gas]-f[flow]"
 	},
+	--base-recipe-changes
 	{
-		type = "int-setting",
-		name = "bc-fc-synthetic-plate-synthetic-plate",
+		type = "bool-setting",
+		name = "bc-petroleum-gas-from-methane-gas",
 		setting_type = "startup",
 		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_synthetic_plate_synthetic_plate,--2,
-		minimum_value = 1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-g[synthetic-plate]"
+		default_value = bc_defaults.bc_petroleum_gas_from_methane_gas,--false,
+		order = "x[settings]-fc-i[recipe]-b[basic-chemsitry]-c[petroleum]"
 	},
-	{
-		type = "double-setting",
-		name = "bc-fc-synthetic-plate-energy",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_synthetic_plate_energy,--1,
-		minimum_value = 0.1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-f[synthetic-plate]-j[energy]"
-	},
-	{
-		type = "int-setting",
-		name = "bc-fc-petroleum-gas-from-methane-gas-methane-gas",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_methane_gas,--30,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-d[methane-gas]"
-	},
-	{
-		type = "int-setting",
-		name = "bc-fc-petroleum-gas-from-methane-gas-syn-gas",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_syn_gas,--10,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-e[syn-gas]"
-	},
-	{
-		type = "int-setting",
-		name = "bc-fc-petroleum-gas-from-methane-gas-petroleum-gas",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_petroleum_gas,--10,
-		minimum_value = 1,
-		maximum_value = 2047,
-		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-g[petroleum-gas]"
-	},
-	{
-		type = "double-setting",
-		name = "bc-fc-petroleum-gas-from-methane-gas-energy",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_energy,--2,
-		minimum_value = 0.1,
-		maximum_value = 255,
-		order = "x[settings]-fc-a[mod]-c[petroleum-gas-from-methane-gas]-j[energy]"
-	},
---base-recipe-changes
 	{
 		type = "int-setting",
 		name = "bc-fc-plastic-bar",
@@ -236,7 +181,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_plastic_bar,--10,
 		minimum_value = 0,
 		maximum_value = 2047,
-		order = "x[settings]-fc-c[base-recipe]-b[plastic-bar]"
+		order = "x[settings]-fc-i[recipe]-c[base]-b[plastic-bar]"
 	},
 	{
 		type = "int-setting",
@@ -246,7 +191,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_electronic_circuit,--1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-c[electronic-circuit]"
+		order = "x[settings]-fc-i[recipe]-c[base]-c[electronic-circuit]"
 	},
 	{
 		type = "int-setting",
@@ -256,7 +201,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_battery,--1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-e[battery]"
+		order = "x[settings]-fc-i[recipe]-c[base]-e[battery]"
 	},
 	{
 		type = "int-setting",
@@ -266,7 +211,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_transport_belt,--2,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-g[transport-belt]"
+		order = "x[settings]-fc-i[recipe]-c[base]-g[transport-belt]"
 	},
 	{
 		type = "int-setting",
@@ -276,7 +221,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_splitter,--4,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-i[splitter]"
+		order = "x[settings]-fc-i[recipe]-c[base]-i[splitter]"
 	},
 	{
 		type = "int-setting",
@@ -286,7 +231,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_inserter,--1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-m[inserter]"
+		order = "x[settings]-fc-i[recipe]-c[base]-m[inserter]"
 	},
 	{
 		type = "int-setting",
@@ -296,7 +241,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_medium_electric_pole,--2,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-p[medium-electric-pole]"
+		order = "x[settings]-fc-i[recipe]-c[base]-p[medium-electric-pole]"
 	},
 	{
 		type = "int-setting",
@@ -306,7 +251,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_big_electric_pole,--5,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-q[big-electric-pole]"
+		order = "x[settings]-fc-i[recipe]-c[base]-q[big-electric-pole]"
 	},
 	{
 		type = "int-setting",
@@ -316,7 +261,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_rail,--1,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-u[rail]"
+		order = "x[settings]-fc-i[recipe]-c[base]-u[rail]"
 	},
 	{
 		type = "int-setting",
@@ -326,7 +271,248 @@ data:extend({
 		default_value = bc_defaults.bc_fc_assembling_machine_1,--5,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-c[base-recipe]-w[assembling-machine-1]"
+		order = "x[settings]-fc-i[recipe]-c[base]-w[assembling-machine-1]"
+	},
+--	Detailed recipe adjustments
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-coal",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_coal,--1,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-c[syn-gas]-d[coal]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_water,--10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-c[syn-gas]-e[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_syn_gas,--15,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-c[syn-gas]-g[syn-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-syn-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_energy,--2,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-c[syn-gas]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_synthetic_plate_water,--10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-f[synthetic-plate]-d[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_synthetic_plate_syn_gas,--20,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-f[synthetic-plate]-e[syn-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-synthetic-plate-synthetic-plate",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_synthetic_plate_synthetic_plate,--2,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-f[synthetic-plate]-g[synthetic-plate]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-synthetic-plate-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_synthetic_plate_energy,--1,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-f[synthetic-plate]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-basic-natural-gas-processing-natural-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_basic_natural_gas_processing_natural_gas,--100,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-i[basic-natural-gas-processing]-c[natural-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-basic-natural-gas-processing-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_basic_natural_gas_processing_methane_gas,--75,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-i[basic-natural-gas-processing]-f[methane-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-basic-natural-gas-processing-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_basic_natural_gas_processing_energy,--5,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-i[basic-natural-gas-processing]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-methane-gas-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_from_methane_gas_methane_gas,--30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-l[syn-gas-from-methane-gas]-d[methane-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-methane-gas-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_from_methane_gas_water,--20,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-l[syn-gas-from-methane-gas]-e[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-syn-gas-from-methane-gas-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_from_methane_gas_syn_gas,--30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-l[syn-gas-from-methane-gas]-g[syn-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-syn-gas-from-methane-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_syn_gas_from_methane_gas_energy,--2,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-l[syn-gas-from-methane-gas]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-advanced-natural-gas-processing-natural-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_advanced_natural_gas_processing_natural_gas,--100,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-c[natural-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-advanced-natural-gas-processing-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_advanced_natural_gas_processing_water,--50,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-d[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-advanced-natural-gas-processing-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_advanced_natural_gas_processing_methane_gas,--100,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-f[methane-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-advanced-natural-gas-processing-petroleum-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_advanced_natural_gas_processing_petroleum_gas,--30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-g[petroleum-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-advanced-natural-gas-processing-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_advanced_natural_gas_processing_energy,--5,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_methane_gas,--30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-i[petroleum-gas-from-methane-gas]-d[methane-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-syn-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_syn_gas,--10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-i[petroleum-gas-from-methane-gas]-e[syn-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-petroleum-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_petroleum_gas,--10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-i[petroleum-gas-from-methane-gas]-g[petroleum-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-petroleum-gas-from-methane-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_from_methane_gas_energy,--2,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-i[petroleum-gas-from-methane-gas]-j[energy]"
 	},
 	{
 		type = "int-setting",
@@ -336,7 +522,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_syn_gas_from_wood,--0,
 		minimum_value = 0,
 		maximum_value = 255,
-		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-d"
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-l[syn-gas-from-wood]-d"
 	},
 	{
 		type = "int-setting",
@@ -346,7 +532,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_syn_gas_from_wood_water,--10,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-e"
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-l[syn-gas-from-wood]-e"
 	},
 	{
 		type = "int-setting",
@@ -356,7 +542,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_syn_gas_from_wood_syn_gas,--15,
 		minimum_value = 1,
 		maximum_value = 2047,
-		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-f"
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-l[syn-gas-from-wood]-f"
 	},
 	{
 		type = "int-setting",
@@ -366,7 +552,7 @@ data:extend({
 		default_value = bc_defaults.bc_fc_syn_gas_from_wood_energy,--2,
 		minimum_value = 1,
 		maximum_value = 255,
-		order = "x[settings]-fc-e[compat]-f[syn-gas-from-wood]-g"
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-l[syn-gas-from-wood]-g"
 	}
 })
 

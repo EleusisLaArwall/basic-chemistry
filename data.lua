@@ -4,8 +4,8 @@ require("prototypes.fluid")
 require("prototypes.item")
 require("prototypes.recipe")
 require("prototypes.resources")
+require("prototypes.sprite")
 require("prototypes.technology")
-require("prototypes.virtual-signal")
 
 require("prototypes.compat.any-planet-start")
 -- Conditional require(…) because data.util can only be required if mod is active.

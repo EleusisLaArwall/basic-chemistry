@@ -1,14 +1,26 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
-Date: 04. 10. 2026
+Date: 11. 10. 2026
   Features:
-    - Changed the way Mod Settings are handled internally
     - Added optional fdsl dependency (expands Mod Settings)
     - Added Mod Setting to remove iron-plate ingredient from electronic-circuit recipe (requires fdsl)
     - Added Mod Setting to remove coal ingredient from plastic-bar recipe (requires fdsl)
     - Added Mod Setting to use steam instead of water
     - Added Mod Setting for a simple mode (coal + water → syn-plate)
     - Added High temperature Syngas recipe for SA (unlocked on Vulcanus)
+    - Added Mod Setting to change icons for Syngas and Methane gas
+    - Added Mod Setting to pick colors for Syngas, Natural gas and Methane gas (requires Full Control)
+    - Added more recipes to adjust in Mod Settings (requires Full Control)
+    - Added recipe for Synthet plate from Spoilage (in Simple Mode)
+  Changes:
+    - Changed the way Mod Settings are handled internally
+    - Changed Advanced oil processing with gas to false by default
+    - Changed default colors for Syngas and Methane Gas
+    - Changed Methane gas → Petroleum gas recipe to Full Control
+    - Changed order of Mod Settings
+    - Changed crafting_machine_tint for various recipes
+    - Changed icons for various recipes
+    - Changed virtual-signals to sprites
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
 Date: 03. 10. 2026

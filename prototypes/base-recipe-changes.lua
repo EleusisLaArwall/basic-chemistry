@@ -43,6 +43,6 @@ if mods["fdsl"] then
 		frep.remove_ingredient("electronic-circuit", "iron-plate")
 	end
 	if bc_settings.bc_plastic_bar_ing_coal_remove then
-		frep.remove_ingredient("plastic-bar", "coal")
+		frep.remove_ingredient("plastic-bar", bc_settings.bc_coal_or_crushed)
 	end
 end

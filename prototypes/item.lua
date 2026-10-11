@@ -8,8 +8,9 @@ data:extend(
 	{
 		type = "item",
 		name = "bc-synthetic-plate",
-		icon = "__basic-chemistry__/graphics/icons/synthetic-bar-brown.png",
-		icon_size = 64,
+		icon = "__basic-chemistry__/graphics/icons/synthetic-" .. bc_settings.bc_synthetic_plate_icon .. ".png",
+--		icon_size = 64,
+		localised_name = {"item-name.bc-synthetic-" .. bc_settings.bc_synthetic_plate_locale},
 		subgroup = "raw-material",
 		order = "b[chemistry]-a[synthetic-plate]",
 		inventory_move_sound = item_sounds.plastic_inventory_move,
@@ -32,22 +33,6 @@ data:extend(
 	}
 }
 )
-
-if bc_settings.bc_synthetic_plate_icon == "original" then
-	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate.png"
-elseif bc_settings.bc_synthetic_plate_icon == "saf" then
-	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-saf.png"
-elseif bc_settings.bc_synthetic_plate_icon == "brown" then
-	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-brown.png"
-elseif bc_settings.bc_synthetic_plate_icon == "white" then
-	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate-white.png"
---elseif bc_settings.bc_synthetic_plate_icon == "bar-brown" then
---	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-bar-brown.png"
-elseif bc_settings.bc_synthetic_plate_icon == "bar-white" then
-	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-bar-white.png"
---else
---	data.raw.item["bc-synthetic-plate"].icon = "__basic-chemistry__/graphics/icons/synthetic-plate.png"
-end
 
 -- Extractor-pump - ITEM
 --if settings.startup["bc-extractor-pump"].value then

@@ -7,13 +7,24 @@ local bc_defaults = {
 	bc_plastic_bar_ing_coal_remove = false,
 	bc_syn_gas_plastic_bar = true,
 	bc_natural_gas = true,
-	bc_natural_gas_from_oil = true,
+	bc_natural_gas_from_oil = false,
 	bc_petroleum_gas_from_methane_gas = false,
 	bc_extractor_pump = false,
+	bc_syn_gas_icon = "atoms",
+	bc_methane_gas_icon = "atoms",
 	bc_synthetic_plate_icon = "bar-brown",
 	bc_fc_overwrite = false,
 -- ================================================== Full Control
 	bc_fc_overwrite_methane_gas_name = false,
+	bc_fc_color_syn_gas_base = {0.62, 0.07, 0.04},--	#9D1309	red delicious apple
+	bc_fc_color_syn_gas_flow = {0.84, 0.44, 0.38},--	#D66F62	fuji apple
+--	bc_fc_color_syn_gas_vis = {},
+	bc_fc_color_natural_gas_base = {0.29, 0.44, 0.14},--	#4A7023	kakapo
+	bc_fc_color_natural_gas_flow = {0.83, 0.93, 0.57},--	#D4ED91	limepulp
+--	bc_fc_color_natural_gas_vis = {},
+	bc_fc_color_methane_gas_base = {0.56, 1.00, 0.98},--	#90FEFB	cool mint
+	bc_fc_color_methane_gas_flow = {0.88, 1.00, 1.00},--	#E0FFFF	lightcyan
+--	bc_fc_color_methane_gas_vis = {},
 -- ================================================== bc recipes
 	bc_fc_syn_gas_coal = 1,
 	bc_fc_syn_gas_water = 10,
@@ -23,6 +34,18 @@ local bc_defaults = {
 	bc_fc_synthetic_plate_syn_gas = 20,
 	bc_fc_synthetic_plate_synthetic_plate = 2,
 	bc_fc_synthetic_plate_energy = 1,
+	bc_fc_basic_natural_gas_processing_natural_gas = 100,
+	bc_fc_basic_natural_gas_processing_methane_gas = 75,
+	bc_fc_basic_natural_gas_processing_energy = 5,
+	bc_fc_syn_gas_from_methane_gas_methane_gas = 30,
+	bc_fc_syn_gas_from_methane_gas_water = 20,
+	bc_fc_syn_gas_from_methane_gas_syn_gas = 30,
+	bc_fc_syn_gas_from_methane_gas_energy = 2,
+	bc_fc_advanced_natural_gas_processing_natural_gas = 100,
+	bc_fc_advanced_natural_gas_processing_water = 50,
+	bc_fc_advanced_natural_gas_processing_methane_gas = 100,
+	bc_fc_advanced_natural_gas_processing_petroleum_gas = 30,
+	bc_fc_advanced_natural_gas_processing_energy = 5,
 	bc_fc_petroleum_gas_from_methane_gas_methane_gas = 30,
 	bc_fc_petroleum_gas_from_methane_gas_syn_gas = 10,
 	bc_fc_petroleum_gas_from_methane_gas_petroleum_gas = 10,
@@ -49,11 +72,18 @@ local bc_defaults = {
 	bc_aai_more_glass_usage = false,
 	bc_si_synthetic_scrap = true,
 -- ================================================== non mod settings
+	bc_syn_gas_icon_scale = 1,
+	bc_methane_gas_icon_scale = 1,
+	bc_synthetic_plate_locale = "bar",
+	bc_coal_or_crushed = "coal",
 	bc_syngas_ing_lqd_name = "water",
 --	bc_syngas_ing_lqd_min_temp = 0,
 	bc_methane_gas_name = "bc-methane-gas",
 	bc_fluid_box_methane_gas = 2,
 	bc_fluid_box_petroleum_gas = 3,
+	bc_fluid_auto_barrel_syn_gas = true,
+	bc_fluid_auto_barrel_natural_gas = true,
+	bc_fluid_auto_barrel_methane_gas = true
 }
 
 return bc_defaults

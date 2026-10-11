@@ -40,8 +40,8 @@ if mods["space-age"] then
 				type = "recipe",
 				name = "bc-syn-gas-high-temp",
 				icons = {
-					{icon="__base__/graphics/icons/fluid/steam.png", shift={-12, -12}, scale=0.4},
-					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", draw_background=true}
+					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", scale=0.375, shift={4,4}},
+					{icon="__base__/graphics/icons/fluid/steam.png", scale=0.3125, shift={-6,-6}, draw_background=true}
 				},
 				categories = {"chemistry", "cryogenics"},
 				enabled = false,
@@ -72,8 +72,8 @@ if mods["space-age"] then
 				type = "recipe",
 				name = "bc-syn-gas-from-spoilage",
 				icons = {
-					{icon="__space-age__/graphics/icons/spoilage.png", shift={-12, -12}, scale=0.4},
-					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", draw_background=true}
+					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", scale=0.375, shift={4,4}},
+					{icon="__space-age__/graphics/icons/spoilage.png", scale=0.3125, shift={-6,-6}, draw_background=true}
 				},
 				-- category = "organic-or-chemistry",
 				categories = {"chemistry"}, {"organic"},
@@ -105,5 +105,44 @@ if mods["space-age"] then
 		)
 		table.insert(data.raw.technology["calcite-processing"].effects, {recipe = "bc-syn-gas-high-temp", type = "unlock-recipe"})
 		table.insert(data.raw.technology["biochamber"].effects, {recipe = "bc-syn-gas-from-spoilage", type = "unlock-recipe"})
+	else
+		data:extend(
+		{
+			{
+				type = "recipe",
+				name = "bc-synthetic-plate-from-spoilage",
+				icons = {
+					{icon = "__basic-chemistry__/graphics/icons/synthetic-" .. bc_settings.bc_synthetic_plate_icon .. ".png", scale=0.375, shift={4,4}},
+					{icon="__space-age__/graphics/icons/spoilage.png", scale=0.3125, shift={-6,-6}, draw_background=true}
+				},
+				-- category = "organic-or-chemistry",
+				categories = {"chemistry"}, {"organic"},
+				subgroup = "agriculture-products",
+				order = "a[organic-products]-i[syn-gas]",
+				enabled = false,
+				allow_productivity = true,
+				energy_required = 2,
+				auto_recycle = false,
+				ingredients =
+				{
+					{type = "item", name = "spoilage", amount = 8},
+					{type = "fluid", name = "water", amount = 10}
+				},
+				results =
+				{
+					{type="item", name="bc-synthetic-plate", amount=1}
+				},
+				crafting_machine_tint =
+				{
+					primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+					secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
+					tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+					quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
+				},
+				show_amount_in_title = false
+			}
+		}
+		)
+		table.insert(data.raw.technology["biochamber"].effects, {recipe = "bc-synthetic-plate-from-spoilage", type = "unlock-recipe"})
 	end
 end

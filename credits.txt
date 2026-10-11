@@ -18,8 +18,8 @@ Changes: Yes. Graphics combined, recolored, resized and rearranged.
 ---------------------------------------------------------------------------------------------------
 
 Icon for:
-- syngas
-- synthetic plate
+- syngas-classic
+- synthetic plate-classic
 - synthetic scrap
 
 Creators: [malcolmriley](https://github.com/malcolmriley)

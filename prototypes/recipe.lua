@@ -6,8 +6,8 @@ data:extend(
 	{
 		type = "recipe",
 		name = "bc-chemical-reactor",
-		energy_required = 1,
 		enabled = false,
+		energy_required = 1,
 		ingredients =
 		{
 			{type = "item", name = "iron-plate", amount = 6},
@@ -29,6 +29,7 @@ if bc_settings.bc_simple_mode then
 --			localised_name = {"recipe-name.bc-synthetic-plate"},
 			categories = {"chemistry"},
 			enabled = false,
+			allow_productivity = true,
 			energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
 			ingredients =
 			{
@@ -39,12 +40,11 @@ if bc_settings.bc_simple_mode then
 			{
 				{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
 			},
-			allow_productivity = true,
 			crafting_machine_tint =
 			{
 				primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 				secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
-				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+				tertiary = {r = 0.42, g = 0.42, b = 0.42, a = 1.000}, --
 				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
 			}
 		}
@@ -57,7 +57,10 @@ else
 			type = "recipe",
 			name = "bc-syn-gas",
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[a-syn-gas]",
 			enabled = false,
+			allow_productivity = true,
 			energy_required = bc_settings.bc_fc_syn_gas_energy,--2,
 			ingredients =
 			{
@@ -68,15 +71,14 @@ else
 			{
 				{type="fluid", name="bc-syn-gas", amount=bc_settings.bc_fc_syn_gas_syn_gas}
 			},
-			allow_productivity = true,
 			main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-a[a-syn-gas]",
 			crafting_machine_tint =
 			{
-				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-				secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
-				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+				--primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+				--secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
+				primary = bc_settings.bc_fc_color_syn_gas_base,
+				secondary = bc_settings.bc_fc_color_syn_gas_flow,
+				tertiary = {r = 0.42, g = 0.42, b = 0.42, a = 1.000}, --
 				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
 			}
 		},
@@ -85,6 +87,7 @@ else
 			name = "bc-synthetic-plate",
 			categories = {"chemistry"},
 			enabled = false,
+			allow_productivity = true,
 			energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
 			ingredients =
 			{
@@ -95,13 +98,14 @@ else
 			{
 				{type = "item", name = "bc-synthetic-plate", amount = bc_settings.bc_fc_synthetic_plate_synthetic_plate}
 			},
-			allow_productivity = true,
 			crafting_machine_tint =
 			{
 				primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 				secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
-				tertiary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-				quaternary = {r = 0.51, g = 0.40, b = 0.53, a = 1.000},--	#816687	eggplant
+				tertiary = bc_settings.bc_fc_color_syn_gas_flow,
+				quaternary = bc_settings.bc_fc_color_syn_gas_base
+--				tertiary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+--				quaternary = {r = 0.51, g = 0.40, b = 0.53, a = 1.000},--	#816687	eggplant
 			}
 		}
 	}
@@ -114,10 +118,13 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-basic-natural-gas-processing-legacy",
-			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing-legacy.png",
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[basic-natural-gas-processing]",
 			enabled = true,
 			hidden = true,
+			allow_productivity = true,
 			energy_required = 2,
 			ingredients =
 			{
@@ -128,11 +135,7 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			{
 				{type = "fluid", name = "bc-syn-gas", amount = 30}
 			},
-			allow_productivity = true,
 			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing-legacy.png",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-a[basic-natural-gas-processing]",
 			crafting_machine_tint =
 			{
 				primary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
@@ -144,10 +147,13 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-advanced-natural-gas-processing-legacy",
-			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing-legacy.png",
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-b[advanced-natural-gas-processing]",
 			enabled = true,
 			hidden = true,
+			allow_productivity = true,
 			energy_required = 2,
 			ingredients =
 			{
@@ -159,11 +165,7 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				{type = "fluid", name = "bc-syn-gas", amount = 40},
 				{type = "fluid", name = "petroleum-gas", amount = 10}
 			},
-			allow_productivity = true,
 			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing-legacy.png",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-b[advanced-natural-gas-processing]",
 			crafting_machine_tint =
 			{
 				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
@@ -176,85 +178,113 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-bas-natural-gas-processing",
-			--category = "oil-processing",
+--			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing.png",
+			icons = {
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.3125*bc_settings.bc_methane_gas_icon_scale, shift={0, 7}},
+				{icon="__basic-chemistry__/graphics/icons/natural-gas.png", scale=0.375, shift={0, -5}, draw_background=true}
+			},
 			categories = {"oil-processing"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[bas-natural-gas-processing]",
 			enabled = false,
-			energy_required = 5,
+			allow_productivity = true,
+			energy_required = bc_settings.bc_fc_basic_natural_gas_processing_energy,
 			ingredients =
 			{
-				{type = "fluid", name = "bc-natural-gas", amount = 100, fluidbox_index = 2}
+				{type = "fluid", name = "bc-natural-gas", amount = bc_settings.bc_fc_basic_natural_gas_processing_natural_gas, fluidbox_index = 2}
 			},
 			results =
 			{
-				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 75, fluidbox_index = bc_settings.bc_fluid_box_methane_gas}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_basic_natural_gas_processing_methane_gas, fluidbox_index = bc_settings.bc_fluid_box_methane_gas}
 			},
-			allow_productivity = true,
-			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/basic-natural-gas-processing.png",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-a[bas-natural-gas-processing]"
+			main_product = ""
 		},
 		{
 			type = "recipe",
 			name = "bc-adv-natural-gas-processing",
-			--category = "oil-processing",
+--			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing.png",
+			icons = {
+				{icon="__basic-chemistry__/graphics/icons/natural-gas.png", scale=0.375, shift={0, -5}},
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25*bc_settings.bc_methane_gas_icon_scale, shift={-8, 8}, draw_background=true},
+				{icon="__base__/graphics/icons/fluid/petroleum-gas.png", scale=0.25, shift={8, 8}, draw_background=true}
+			},
 			categories = {"oil-processing"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-b[adv-natural-gas-processing]",
 			enabled = false,
-			energy_required = 5,
+			allow_productivity = true,
+			energy_required = bc_settings.bc_fc_advanced_natural_gas_processing_energy,
 			ingredients =
 			{
-				{type = "fluid", name = "water", amount = 50},
-				{type = "fluid", name = "bc-natural-gas", amount = 100}
+				{type = "fluid", name = "water", amount = bc_settings.bc_fc_advanced_natural_gas_processing_water},
+				{type = "fluid", name = "bc-natural-gas", amount = bc_settings.bc_fc_advanced_natural_gas_processing_natural_gas}
 			},
 			results =
 			{
-				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 100, fluidbox_index = bc_settings.bc_fluid_box_methane_gas},
-				{type = "fluid", name = "petroleum-gas", amount = 30, fluidbox_index = bc_settings.bc_fluid_box_petroleum_gas},
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_advanced_natural_gas_processing_methane_gas, fluidbox_index = bc_settings.bc_fluid_box_methane_gas},
+				{type = "fluid", name = "petroleum-gas", amount = bc_settings.bc_fc_advanced_natural_gas_processing_petroleum_gas, fluidbox_index = bc_settings.bc_fluid_box_petroleum_gas},
 			},
-			allow_productivity = true,
-			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/advanced-natural-gas-processing.png",
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-b[adv-natural-gas-processing]"
+			main_product = ""
 		},
 		{
 			type = "recipe",
 			name = "bc-syn-gas-from-methane-gas",
-			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+--			icon = "__basic-chemistry__/graphics/icons/syn-gas-from-methane-gas.png",
+-- 			icons = {
+-- 				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.3125, shift={0, -7}},
+-- 				{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.25, shift={-8, 8}, draw_background=true},
+-- 				{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.25, shift={8, 8}, draw_background=true}
+-- 			},
+			icons = {
+				{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.375, shift={4,4}},
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.3125, shift={-6,-6}, draw_background=true}
+--				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25, shift={-8,-8}, draw_background=true}
+			},
 			categories = {"chemistry"},
-			enabled = false,
-			energy_required = 2,
-			ingredients =
-			{
-				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = 20},
-				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 30}
-			},
-			results =
-			{
-				{type = "fluid", name = "bc-syn-gas", amount = 30}
-			},
-			allow_productivity = true,
-			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/syn-gas-from-methane-gas.png",
 			subgroup = "fluid-recipes",
 --			order = "a[rng-processing]-c[syn-gas-from-methane-gas]",
 			order = "b[fluid-chemistry]-b[syn-gas-from-methane-gas]",
+			enabled = false,
+			allow_productivity = true,
+			energy_required = bc_settings.bc_fc_syn_gas_from_methane_gas_energy,
+			ingredients =
+			{
+				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_syn_gas_from_methane_gas_water},
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_syn_gas_from_methane_gas_methane_gas}
+			},
+			results =
+			{
+				{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_syn_gas_from_methane_gas_syn_gas}
+			},
+			main_product = "",
 			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{
-				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
-				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+				primary = bc_settings.bc_fc_color_syn_gas_base,
+				secondary = bc_settings.bc_fc_color_syn_gas_flow,
+				tertiary = bc_settings.bc_fc_color_methane_gas_flow,
+				quaternary = {0.53, 0.81, 0.92, 1.00},--	#87CEEB	skyblue--bc_settings.bc_fc_color_methane_gas_base,
+--				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+--				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
 	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
-				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
-				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+--				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+--				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		},
 		{
 			type = "recipe",
 			name = "bc-petroleum-gas-cracking",
-			--category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+--			icon = "__basic-chemistry__/graphics/icons/petroleum-gas-cracking.png",
+			icons = {
+				{icon="__base__/graphics/icons/fluid/petroleum-gas.png", scale=0.375, shift={0, -6}},
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25*bc_settings.bc_methane_gas_icon_scale, shift={-8, 8}, draw_background=true},
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25*bc_settings.bc_methane_gas_icon_scale, shift={8, 8}, draw_background=true}
+			},
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-b[petroleum-gas-cracking]",
 			enabled = false,
+			allow_productivity = true,
 			energy_required = 1,
 			ingredients =
 			{
@@ -265,26 +295,33 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			{
 				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 10}
 			},
-			allow_productivity = true,
 			main_product = "",
-			icon = "__basic-chemistry__/graphics/icons/petroleum-gas-cracking.png",
-			subgroup = "fluid-recipes",
-			order = "b[fluid-chemistry]-b[petroleum-gas-cracking]",
-			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{
-				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
-				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+				primary = bc_settings.bc_fc_color_methane_gas_base,
+				secondary = bc_settings.bc_fc_color_methane_gas_flow,
+				tertiary = {0.564, 0.496, 0.580, 1.000},
+				quaternary = {0.762, 0.551, 0.844, 1.000}, -- #c28cd7ff
+--				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+--				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
 	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
-				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
-				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+--				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+--				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		},
 		{
 			type = "recipe",
 			name = "bc-solid-fuel-from-methane-gas",
+--			icon = "__basic-chemistry__/graphics/icons/solid-fuel-from-methane-gas.png",
+			icons = {
+				{icon="__base__/graphics/icons/solid-fuel.png", scale=0.5},
+				{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25*bc_settings.bc_methane_gas_icon_scale, shift={-7, -7}, draw_background=true},
+			},
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-c[solid-fuel-from-methane-gas]",
 			enabled = false,
+			allow_productivity = true,
 			auto_recycle = false,
 			energy_required = 1,
 			ingredients =
@@ -295,18 +332,17 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			{
 				{type = "item", name = "solid-fuel", amount = 1}
 			},
-			allow_productivity = true,
-			icon = "__basic-chemistry__/graphics/icons/solid-fuel-from-methane-gas.png",
-			subgroup = "fluid-recipes",
-			order = "b[fluid-chemistry]-c[solid-fuel-from-methane-gas]",
-			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{
-				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
-				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
+				primary = {0.768, 0.631, 0.768, 1.000},
+				secondary = {0.659, 0.592, 0.678, 1.000},
+				tertiary = bc_settings.bc_fc_color_methane_gas_flow,
+				quaternary = bc_settings.bc_fc_color_methane_gas_base,
+--				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
+--				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
 	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
-				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
-				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
+--				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
+--				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		}
 	}
@@ -317,8 +353,17 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			{
 				type = "recipe",
 				name = "bc-petroleum-gas-from-methane-gas",
+--				icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-methane-gas.png",
+				icons = {
+					{icon="__basic-chemistry__/graphics/icons/methane-gas-" .. bc_settings.bc_methane_gas_icon .. ".png", scale=0.25*bc_settings.bc_methane_gas_icon_scale, shift={-8, -8}, draw_background=true},
+					{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.25*bc_settings.bc_syn_gas_icon_scale, shift={8, -8}, draw_background=true},
+					{icon="__base__/graphics/icons/fluid/petroleum-gas.png", scale=0.375, shift={0, 8}, draw_background=true}
+				},
 				categories = {"chemistry"},
+				subgroup = "fluid-recipes",
+				order = "b[fluid-chemistry]-b[v-petroleum-gas-from-methane-gas]",
 				enabled = false,
+				allow_productivity = true,
 				energy_required = bc_settings.bc_fc_petroleum_gas_from_methane_gas_energy,
 				ingredients =
 				{
@@ -329,10 +374,6 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				{
 					{type = "fluid", name = "petroleum-gas", amount = bc_settings.bc_fc_petroleum_gas_from_methane_gas_petroleum_gas}
 				},
-				allow_productivity = true,
-				icon = "__basic-chemistry__/graphics/icons/petroleum-gas-from-methane-gas.png",
-				subgroup = "fluid-recipes",
-				order = "b[fluid-chemistry]-b[v-petroleum-gas-from-methane-gas]",
 				-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 				crafting_machine_tint =
 				{
@@ -354,9 +395,12 @@ if bc_settings.bc_natural_gas_from_oil then
 		{
 			type = "recipe",
 			name = "bc-advanced-oil-processing-with-gas",
-			--category = "oil-processing",
+			icon = "__basic-chemistry__/graphics/icons/advanced-oil-processing-with-gas.png",
 			categories = {"oil-processing"},
+			subgroup = "fluid-recipes",
+			order = "a[oil-processing]-c[advanced-oil-processing-with-gas]",
 			enabled = false,
+			allow_productivity = true,
 			energy_required = 5,
 			ingredients =
 			{
@@ -369,10 +413,6 @@ if bc_settings.bc_natural_gas_from_oil then
 				{type = "fluid", name = "light-oil", amount = 45},
 				{type = "fluid", name = "bc-natural-gas", amount = 120}
 			},
-			allow_productivity = true,
-			icon = "__basic-chemistry__/graphics/icons/advanced-oil-processing-with-gas.png",
-			subgroup = "fluid-recipes",
-			order = "a[oil-processing]-c[advanced-oil-processing-with-gas]"
 		}
 	}
 	)
@@ -384,9 +424,16 @@ if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 		{
 			type = "recipe",
 			name = "bc-syn-gas-from-wood",
-			--category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+			icons = {
+				{icon="__base__/graphics/icons/wood.png", shift={-12, -12}, scale=0.4},
+				{icon="__basic-chemistry__/graphics/icons/syn-gas.png", draw_background=true}
+			},
 			categories = {"chemistry"},
+			subgroup = "fluid-recipes",
+			order = "a[rng-processing]-a[b-syn-gas]",
+			factoriopedia_alternative = "bc-syn-gas",
 			enabled = false,
+			allow_productivity = true,
 			energy_required = bc_settings.bc_fc_syn_gas_from_wood_energy,
 			ingredients =
 			{
@@ -397,20 +444,16 @@ if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 			{
 				{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_syn_gas_from_wood_syn_gas}
 			},
-			allow_productivity = true,
-			icons = {
-				{icon="__base__/graphics/icons/wood.png", shift={-12, -12}, scale=0.4},
-				{icon="__basic-chemistry__/graphics/icons/syn-gas.png", draw_background=true}
-			},
-			subgroup = "fluid-recipes",
-			order = "a[rng-processing]-a[b-syn-gas]",
-			factoriopedia_alternative = "bc-syn-gas",
 			crafting_machine_tint =
 			{
-				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-				secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
-				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
-				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
+				primary = bc_settings.bc_fc_color_syn_gas_base,
+				secondary = bc_settings.bc_fc_color_syn_gas_flow,
+				tertiary = {0.29, 0.44, 0.14, 1.00}, --	#4A7023	kakapo
+				quaternary = {0.53, 0.26, 0.12, 1.00}, --	#87421F	brownochre
+--				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
+--				secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
+--				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
+--				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
 			}
 		}
 	}
