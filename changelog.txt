@@ -21,6 +21,7 @@ Date: 11. 10. 2026
     - Changed crafting_machine_tint for various recipes
     - Changed icons for various recipes
     - Changed virtual-signals to sprites
+    - Changed thumbnail
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
 Date: 03. 10. 2026
