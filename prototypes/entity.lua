@@ -245,182 +245,181 @@ data:extend(
 )
 
 -- Extractor-pump - ENTITY
---if settings.startup["bc-extractor-pump"].value then
-	local extractor_pump = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
-	extractor_pump.name = "bc-extractor-pump"
-	extractor_pump.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
-	extractor_pump.minable.result = "bc-extractor-pump"
-	extractor_pump.next_upgrade = "pumpjack"
-	extractor_pump.energy_source = {
-		type = "burner",
-		fuel_categories = {"chemical", data.raw["fuel-category"]["processed-chemical"] and "processed-chemical"},
-		effectivity = 0.8,
-		fuel_inventory_size = 1,
-		emissions_per_minute = { pollution = 2 },
-		smoke =
-		{
-			{
-				name = "smoke",
-				deviation = {0.1, 0.1},
-				position = {0.5, -1.5},
-				frequency = 2
-			}
-		}
-	}
-	extractor_pump.energy_usage = "24kW"	-- 24kW ÷ 0.8 = 30 kW; energy_usage ÷ effectivity = ingame
-	extractor_pump.mining_speed = 0.5
-	extractor_pump.module_slots = 0
-	extractor_pump.output_fluid_box.pipe_connections =
+-- Keep entity even if disabled
+local extractor_pump = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
+extractor_pump.name = "bc-extractor-pump"
+extractor_pump.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
+extractor_pump.minable.result = "bc-extractor-pump"
+extractor_pump.next_upgrade = "pumpjack"
+extractor_pump.energy_source = {
+	type = "burner",
+	fuel_categories = {"chemical", data.raw["fuel-category"]["processed-chemical"] and "processed-chemical"},
+	effectivity = 0.8,
+	fuel_inventory_size = 1,
+	emissions_per_minute = { pollution = 2 },
+	smoke =
 	{
 		{
-			direction = defines.direction.north,
-			positions = {{1, -1}, {1, -1}, {-1, 1}, {-1, 1}},
-			flow_direction = "output"
+			name = "smoke",
+			deviation = {0.1, 0.1},
+			position = {0.5, -1.5},
+			frequency = 2
 		}
 	}
-	extractor_pump.migrate_horizontal_mirroring = false
-	extractor_pump.use_mirroring = false
-	extractor_pump.graphics_set =
+}
+extractor_pump.energy_usage = "24kW"	-- 24kW ÷ 0.8 = 30 kW; energy_usage ÷ effectivity = ingame
+extractor_pump.mining_speed = 0.5
+extractor_pump.module_slots = 0
+extractor_pump.output_fluid_box.pipe_connections =
+{
 	{
-		working_visualisations =
+		direction = defines.direction.north,
+		positions = {{1, -1}, {1, -1}, {-1, 1}, {-1, 1}},
+		flow_direction = "output"
+	}
+}
+extractor_pump.migrate_horizontal_mirroring = false
+extractor_pump.use_mirroring = false
+extractor_pump.graphics_set =
+{
+	working_visualisations =
+	{
 		{
+			always_draw = true,
+			secondary_draw_order = -1,
+			north_animation =
 			{
-				always_draw = true,
-				secondary_draw_order = -1,
-				north_animation =
+				layers =
 				{
-					layers =
 					{
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
-							priority = "extra-high",
-							x = 0,
-							width = 261,
-							height = 273,
-							shift = util.by_pixel(-2.25, -4.75),
-							scale = 0.5
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
-							x = 0,
-							width = 220,
-							height = 220,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(6, 0.5)
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
-							x = 0,
-							width = 309,
-							height = 82,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(17.75, 14.5)
-						}
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
+						priority = "extra-high",
+						x = 0,
+						width = 261,
+						height = 273,
+						shift = util.by_pixel(-2.25, -4.75),
+						scale = 0.5
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
+						x = 0,
+						width = 220,
+						height = 220,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(6, 0.5)
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
+						x = 0,
+						width = 309,
+						height = 82,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(17.75, 14.5)
 					}
-				},
-				east_animation =
+				}
+			},
+			east_animation =
+			{
+				layers =
 				{
-					layers =
 					{
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
-							priority = "extra-high",
-							x = 261,
-							width = 261,
-							height = 273,
-							shift = util.by_pixel(-2.25, -4.75),
-							scale = 0.5
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
-							x = 220,
-							width = 220,
-							height = 220,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(6, 0.5)
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
-							x = 309,
-							width = 309,
-							height = 82,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(17.75, 14.5)
-						}
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
+						priority = "extra-high",
+						x = 261,
+						width = 261,
+						height = 273,
+						shift = util.by_pixel(-2.25, -4.75),
+						scale = 0.5
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
+						x = 220,
+						width = 220,
+						height = 220,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(6, 0.5)
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
+						x = 309,
+						width = 309,
+						height = 82,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(17.75, 14.5)
 					}
-				},
-				south_animation =
+				}
+			},
+			south_animation =
+			{
+				layers =
 				{
-					layers =
 					{
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
-							priority = "extra-high",
-							x = 261*2,
-							width = 261,
-							height = 273,
-							shift = util.by_pixel(-2.25, -4.75),
-							scale = 0.5
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
-							x =220*2,
-							width = 220,
-							height = 220,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(6, 0.5)
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
-							x = 309*2,
-							width = 309,
-							height = 82,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(17.75, 14.5)
-						}
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
+						priority = "extra-high",
+						x = 261*2,
+						width = 261,
+						height = 273,
+						shift = util.by_pixel(-2.25, -4.75),
+						scale = 0.5
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
+						x =220*2,
+						width = 220,
+						height = 220,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(6, 0.5)
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
+						x = 309*2,
+						width = 309,
+						height = 82,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(17.75, 14.5)
 					}
-				},
-				west_animation =
+				}
+			},
+			west_animation =
+			{
+				layers =
 				{
-					layers =
 					{
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
-							priority = "extra-high",
-							x = 261*3,
-							width = 261,
-							height = 273,
-							shift = util.by_pixel(-2.25, -4.75),
-							scale = 0.5
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
-							x = 220*3,
-							width = 220,
-							height = 220,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(6, 0.5)
-						},
-						{
-							filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
-							x = 309*3,
-							width = 309,
-							height = 82,
-							scale = 0.5,
-							draw_as_shadow = true,
-							shift = util.by_pixel(17.75, 14.5)
-						}
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump.png",
+						priority = "extra-high",
+						x = 261*3,
+						width = 261,
+						height = 273,
+						shift = util.by_pixel(-2.25, -4.75),
+						scale = 0.5
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow.png",
+						x = 220*3,
+						width = 220,
+						height = 220,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(6, 0.5)
+					},
+					{
+						filename = "__basic-chemistry__/graphics/entity/extractor-pump/extractor-pump-shadow-inner.png",
+						x = 309*3,
+						width = 309,
+						height = 82,
+						scale = 0.5,
+						draw_as_shadow = true,
+						shift = util.by_pixel(17.75, 14.5)
 					}
 				}
 			}
 		}
 	}
-	data:extend({ extractor_pump })
---end
+}
+data:extend({ extractor_pump })

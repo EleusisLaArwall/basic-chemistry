@@ -12,7 +12,7 @@ local bc_settings = require ("bc-settings")
 
 -- Make changes only if crushing industry's mod setting has enabled crushing coal
 if settings.startup["crushing-industry-coal"].value then
--- Replace coal with crushed coal.
+-- Replace coal with crushed coal. Simple or Normal mode!
 	if bc_settings.bc_simple_mode then
 		frep.replace_ingredient("bc-synthetic-plate", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
 	else

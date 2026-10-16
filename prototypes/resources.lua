@@ -3,8 +3,6 @@ local tile_sounds = require("__base__.prototypes.tile.tile-sounds")
 
 -- Basic Chemistry Mod Settings
 local bc_settings = require ("bc-settings")
---local bc_natural_gas = settings.startup["bc-natural-gas"].value
---local bc_coal_amount = settings.startup["bc-coal-amount"].value
 
 if bc_settings.bc_natural_gas then
 	resource_autoplace.initialize_patch_set("bc-natural-gas", true)

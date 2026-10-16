@@ -1,8 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local bc_settings = require ("bc-settings")
 
---local synthetic_plate_icon = settings.startup["bc-synthetic-plate-icon"].value
-
 data:extend(
 {
 	{
@@ -35,11 +33,10 @@ data:extend(
 )
 
 -- Extractor-pump - ITEM
---if settings.startup["bc-extractor-pump"].value then
-	local extractor_pump_item = table.deepcopy(data.raw["item"]["pumpjack"])
-	extractor_pump_item.name = "bc-extractor-pump"
-	extractor_pump_item.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
-	extractor_pump_item.order = "b[fluids]-b[extractor-pump]"
-	extractor_pump_item.place_result = "bc-extractor-pump"
-	data:extend({ extractor_pump_item })
---end
+-- Keep item-config even if disabled
+local extractor_pump_item = table.deepcopy(data.raw["item"]["pumpjack"])
+extractor_pump_item.name = "bc-extractor-pump"
+extractor_pump_item.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
+extractor_pump_item.order = "b[fluids]-b[extractor-pump]"
+extractor_pump_item.place_result = "bc-extractor-pump"
+data:extend({ extractor_pump_item })

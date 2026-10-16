@@ -57,7 +57,7 @@ data:extend({
 		name = "bc-syn-gas-icon",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_syn_gas_icon,
-		allowed_values = { "atoms", "cloud", "cloud-atoms", "classic"},
+		allowed_values = { "atoms", "cloud-atoms", "cloud", "classic"},
 		order = "f[visual]-c"
 	},
 	{
@@ -65,7 +65,7 @@ data:extend({
 		name = "bc-methane-gas-icon",
 		setting_type = "startup",
 		default_value = bc_defaults.bc_methane_gas_icon,
-		allowed_values = { "atoms", "cloud", "cloud-atoms"},
+		allowed_values = { "atoms", "cloud-atoms", "cloud"},
 		order = "f[visual]-d"
 	},
 	{
@@ -473,6 +473,76 @@ data:extend({
 		minimum_value = 0.1,
 		maximum_value = 255,
 		order = "x[settings]-fc-i[recipe]-f[detailed]-o[advanced-natural-gas-processing]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-cracking-water",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_cracking_water,--30,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-r[petroleum-gas-cracking]-d[water]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-cracking-petroleum-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_cracking_petroleum_gas,--20,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-r[petroleum-gas-cracking]-f[petroleum-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-petroleum-gas-cracking-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_cracking_methane_gas,--10,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-r[petroleum-gas-cracking]-g[methane-gas]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-petroleum-gas-cracking-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_petroleum_gas_cracking_energy,--1,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-r[petroleum-gas-cracking]-j[energy]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-solid-fuel-from-methane-gas-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_solid_fuel_from_methane_gas_methane_gas,--20,
+		minimum_value = 1,
+		maximum_value = 2047,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-u[solid-fuel]-d[methane-gas]"
+	},
+	{
+		type = "int-setting",
+		name = "bc-fc-solid-fuel-from-methane-gas-solid-fuel",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_solid_fuel_from_methane_gas_solid_fuel,--1,
+		minimum_value = 1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-u[solid-fuel]-g[solid-fuel]"
+	},
+	{
+		type = "double-setting",
+		name = "bc-fc-solid-fuel-from-methane-gas-energy",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_fc_solid_fuel_from_methane_gas_energy,--1,
+		minimum_value = 0.1,
+		maximum_value = 255,
+		order = "x[settings]-fc-i[recipe]-f[detailed]-u[solid-fuel]-j[energy]"
 	},
 	{
 		type = "int-setting",

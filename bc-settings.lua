@@ -102,6 +102,15 @@ if not bc_settings.bc_fc_overwrite then
 	bc_settings.bc_fc_advanced_natural_gas_processing_methane_gas = settings.startup["bc-fc-advanced-natural-gas-processing-methane-gas"].value
 	bc_settings.bc_fc_advanced_natural_gas_processing_petroleum_gas = settings.startup["bc-fc-advanced-natural-gas-processing-petroleum-gas"].value
 	bc_settings.bc_fc_advanced_natural_gas_processing_energy = settings.startup["bc-fc-advanced-natural-gas-processing-energy"].value
+--	Petroleum → Methane
+	bc_settings.bc_fc_petroleum_gas_cracking_water = settings.startup["bc-fc-petroleum-gas-cracking-water"].value
+	bc_settings.bc_fc_petroleum_gas_cracking_petroleum_gas = settings.startup["bc-fc-petroleum-gas-cracking-petroleum-gas"].value
+	bc_settings.bc_fc_petroleum_gas_cracking_methane_gas = settings.startup["bc-fc-petroleum-gas-cracking-methane-gas"].value
+	bc_settings.bc_fc_petroleum_gas_cracking_energy = settings.startup["bc-fc-petroleum-gas-cracking-energy"].value
+--	Methane → Solid Fuel
+	bc_settings.bc_fc_solid_fuel_from_methane_gas_methane_gas = settings.startup["bc-fc-solid-fuel-from-methane-gas-methane-gas"].value
+	bc_settings.bc_fc_solid_fuel_from_methane_gas_solid_fuel = settings.startup["bc-fc-solid-fuel-from-methane-gas-solid-fuel"].value
+	bc_settings.bc_fc_solid_fuel_from_methane_gas_energy = settings.startup["bc-fc-solid-fuel-from-methane-gas-energy"].value
 --	Methane → Petroleum
 	bc_settings.bc_fc_petroleum_gas_from_methane_gas_methane_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-methane-gas"].value
 	bc_settings.bc_fc_petroleum_gas_from_methane_gas_syn_gas = settings.startup["bc-fc-petroleum-gas-from-methane-gas-syn-gas"].value

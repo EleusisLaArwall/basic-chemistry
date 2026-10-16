@@ -1,6 +1,3 @@
--- FDSL is dependency of crushing-industry
-local frep = require("__fdsl__.lib.recipe")
-
 -- Basic Chemistry Mod Settings
 local bc_settings = require ("bc-settings")
 
@@ -39,6 +36,7 @@ if bc_settings.bc_fc_assembling_machine_1 > 0 then
 end
 
 if mods["fdsl"] then
+	local frep = require("__fdsl__.lib.recipe")
 	if bc_settings.bc_electronic_circuit_ing_iron_plate_remove then
 		frep.remove_ingredient("electronic-circuit", "iron-plate")
 	end

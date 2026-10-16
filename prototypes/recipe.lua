@@ -74,8 +74,6 @@ else
 			main_product = "bc-syn-gas",--mods["scrap-chemistry"] and "bc-syn-gas",
 			crafting_machine_tint =
 			{
-				--primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
-				--secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
 				primary = bc_settings.bc_fc_color_syn_gas_base,
 				secondary = bc_settings.bc_fc_color_syn_gas_flow,
 				tertiary = {r = 0.42, g = 0.42, b = 0.42, a = 1.000}, --
@@ -103,9 +101,7 @@ else
 				primary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 				secondary = {r = 0.53, g = 0.26, b = 0.12, a = 1.000}, --	#87421F	brownochre
 				tertiary = bc_settings.bc_fc_color_syn_gas_flow,
-				quaternary = bc_settings.bc_fc_color_syn_gas_base
---				tertiary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
---				quaternary = {r = 0.51, g = 0.40, b = 0.53, a = 1.000},--	#816687	eggplant
+				quaternary = bc_settings.bc_fc_color_syn_gas_base,
 			}
 		}
 	}
@@ -170,7 +166,6 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			{
 				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
 				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
-	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
 				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
 				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
@@ -257,18 +252,12 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				{type = "fluid", name = "bc-syn-gas", amount = bc_settings.bc_fc_syn_gas_from_methane_gas_syn_gas}
 			},
 			main_product = "",
-			-- TODO: CHANGE COLORS! ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
 			crafting_machine_tint =
 			{
 				primary = bc_settings.bc_fc_color_syn_gas_base,
 				secondary = bc_settings.bc_fc_color_syn_gas_flow,
 				tertiary = bc_settings.bc_fc_color_methane_gas_flow,
 				quaternary = {0.53, 0.81, 0.92, 1.00},--	#87CEEB	skyblue--bc_settings.bc_fc_color_methane_gas_base,
---				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
---				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
-	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
---				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
---				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		},
 		{
@@ -285,15 +274,15 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			order = "b[fluid-chemistry]-b[petroleum-gas-cracking]",
 			enabled = false,
 			allow_productivity = true,
-			energy_required = 1,
+			energy_required = bc_settings.bc_fc_petroleum_gas_cracking_energy,
 			ingredients =
 			{
-				{type = "fluid", name = "water", amount = 30},
-				{type = "fluid", name = "petroleum-gas", amount = 20}
+				{type = "fluid", name = "water", amount = bc_settings.bc_fc_petroleum_gas_cracking_water},
+				{type = "fluid", name = "petroleum-gas", amount = bc_settings.bc_fc_petroleum_gas_cracking_petroleum_gas}
 			},
 			results =
 			{
-				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 10}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_petroleum_gas_cracking_methane_gas}
 			},
 			main_product = "",
 			crafting_machine_tint =
@@ -302,11 +291,6 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				secondary = bc_settings.bc_fc_color_methane_gas_flow,
 				tertiary = {0.564, 0.496, 0.580, 1.000},
 				quaternary = {0.762, 0.551, 0.844, 1.000}, -- #c28cd7ff
---				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
---				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
-	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
---				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
---				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		},
 		{
@@ -323,14 +307,14 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			energy_required = 1,
+			energy_required = bc_settings.bc_fc_solid_fuel_from_methane_gas_energy,
 			ingredients =
 			{
-				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = 20}
+				{type = "fluid", name = bc_settings.bc_methane_gas_name, amount = bc_settings.bc_fc_solid_fuel_from_methane_gas_methane_gas}
 			},
 			results =
 			{
-				{type = "item", name = "solid-fuel", amount = 1}
+				{type = "item", name = "solid-fuel", amount = bc_settings.bc_fc_solid_fuel_from_methane_gas_solid_fuel}
 			},
 			crafting_machine_tint =
 			{
@@ -338,11 +322,6 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				secondary = {0.659, 0.592, 0.678, 1.000},
 				tertiary = bc_settings.bc_fc_color_methane_gas_flow,
 				quaternary = bc_settings.bc_fc_color_methane_gas_base,
---				primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
---				secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
-	--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
---				tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
---				quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 			}
 		}
 	}
@@ -379,7 +358,6 @@ if bc_settings.bc_natural_gas or bc_settings.bc_natural_gas_from_oil then
 				{
 					primary = {r = 0.88, g = 0.40, b = 1.00, a = 1.000},--	#E066FF	medium orchid1
 					secondary = {r = 0.86, g = 0.64, b = 0.80, a = 1.000}, --	#DCA2CD	pink candy
-		--			tertiary = {r = 0.83, g = 0.93, b = 0.57, a = 1.000}, --	#D4ED91	limepulp
 					tertiary = {r = 0.86, g = 1.00, b = 0.97, a = 1.000}, --	#DBFEF8	mint blue
 					quaternary = {r = 0.29, g = 0.44, b = 0.14, a = 1.000}, --	#4A7023	kakapo
 				}
@@ -450,10 +428,6 @@ if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 				secondary = bc_settings.bc_fc_color_syn_gas_flow,
 				tertiary = {0.29, 0.44, 0.14, 1.00}, --	#4A7023	kakapo
 				quaternary = {0.53, 0.26, 0.12, 1.00}, --	#87421F	brownochre
---				primary = {r = 0.97, g = 0.70, b = 0.85, a = 1.000}, --	#F7B3DA	cotton candy
---				secondary = {r = 1.00, g = 0.51, b = 0.98, a = 1.000},--	#FF83FA	orchid1
---				tertiary = {r = 0.23, g = 0.23, b = 0.23, a = 1.000}, --
---				quaternary = {r = 0.05, g = 0.05, b = 0.05, a = 1.000}, --
 			}
 		}
 	}
