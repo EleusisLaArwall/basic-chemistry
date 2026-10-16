@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
-Date: 11. 10. 2026
+Date: 16. 10. 2026
   Features:
     - Added optional fdsl dependency (expands Mod Settings)
     - Added Mod Setting to remove iron-plate ingredient from electronic-circuit recipe (requires fdsl)
@@ -11,7 +11,7 @@ Date: 11. 10. 2026
     - Added Mod Setting to change icons for Syngas and Methane gas
     - Added Mod Setting to pick colors for Syngas, Natural gas and Methane gas (requires Full Control)
     - Added more recipes to adjust in Mod Settings (requires Full Control)
-    - Added recipe for Synthet plate from Spoilage (in Simple Mode)
+    - Added recipe for Synthetic plate from Spoilage (in Simple Mode)
   Changes:
     - Changed the way Mod Settings are handled internally
     - Changed Advanced oil processing with gas to false by default

@@ -33,7 +33,7 @@ if bc_settings.bc_simple_mode then
 			energy_required = bc_settings.bc_fc_synthetic_plate_energy,--1,
 			ingredients =
 			{
-				{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+				{type="item", name=bc_settings.bc_coal_or_crushed, amount=bc_settings.bc_fc_syn_gas_coal},
 				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_synthetic_plate_water, minimum_temperature = bc_settings.bc_syngas_ing_lqd_min_temp}
 			},
 			results =
@@ -64,7 +64,7 @@ else
 			energy_required = bc_settings.bc_fc_syn_gas_energy,--2,
 			ingredients =
 			{
-				{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+				{type="item", name=bc_settings.bc_coal_or_crushed, amount=bc_settings.bc_fc_syn_gas_coal},
 				{type = "fluid", name = bc_settings.bc_syngas_ing_lqd_name, amount = bc_settings.bc_fc_syn_gas_water, minimum_temperature = bc_settings.bc_syngas_ing_lqd_min_temp}
 			},
 			results =

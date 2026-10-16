@@ -4,22 +4,6 @@ local frep = require("__fdsl__.lib.recipe")
 -- Basic Chemistry Mod Settings
 local bc_settings = require ("bc-settings")
 
---local bc_fc_syn_gas_coal = settings.startup["bc-fc-syn-gas-coal"].value
-
---if settings.startup["bc-fc-overwrite"].value then
---	bc_settings.bc_fc_syn_gas_coal = 1
---end
-
--- Make changes only if crushing industry's mod setting has enabled crushing coal
-if settings.startup["crushing-industry-coal"].value then
--- Replace coal with crushed coal. Simple or Normal mode!
-	if bc_settings.bc_simple_mode then
-		frep.replace_ingredient("bc-synthetic-plate", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
-	else
-		frep.replace_ingredient("bc-syn-gas", "coal", {type="item", name="crushed-coal", amount=bc_settings.bc_fc_syn_gas_coal})
-	end
-end
-
 -- If "more glass usage" is enabled, advanced circuit (red) requires glass. Also train-stuff, car and display require glass
 -- IF aai is NOT installed AND basic chemistry's more glass mod setting is enabled AND crushing industry's sand and glass mod setting is enabled
 if not mods["aai-industry"] and bc_settings.bc_aai_more_glass_usage and settings.startup["crushing-industry-glass"].value then

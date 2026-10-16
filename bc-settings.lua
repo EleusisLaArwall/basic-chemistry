@@ -44,7 +44,7 @@ end
 
 --	Default "coal". If CI is installed use "crushed-coal" if available
 if mods["crushing-industry"] then
-	if settings.startup["crushing-industry-coal"] then
+	if settings.startup["crushing-industry-coal"].value then
 		bc_settings.bc_coal_or_crushed = "crushed-coal"
 	end
 end

@@ -48,7 +48,7 @@ if mods["space-age"] then
 				energy_required = 1,
 				ingredients =
 				{
-					{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
+					{type="item", name=bc_settings.bc_coal_or_crushed, amount=bc_settings.bc_fc_syn_gas_coal},
 					{type = "fluid", name = "steam", amount = bc_settings.bc_fc_syn_gas_water, minimum_temperature = 500}
 				},
 				results =
