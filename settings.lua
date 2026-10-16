@@ -166,14 +166,6 @@ data:extend({
 	},
 	--base-recipe-changes
 	{
-		type = "bool-setting",
-		name = "bc-petroleum-gas-from-methane-gas",
-		setting_type = "startup",
-		hidden = bc_full_control,
-		default_value = bc_defaults.bc_petroleum_gas_from_methane_gas,--false,
-		order = "x[settings]-fc-i[recipe]-b[basic-chemsitry]-c[petroleum]"
-	},
-	{
 		type = "int-setting",
 		name = "bc-fc-plastic-bar",
 		setting_type = "startup",
@@ -543,6 +535,15 @@ data:extend({
 		minimum_value = 0.1,
 		maximum_value = 255,
 		order = "x[settings]-fc-i[recipe]-f[detailed]-u[solid-fuel]-j[energy]"
+	},
+-- optinal recipes
+	{
+		type = "bool-setting",
+		name = "bc-petroleum-gas-from-methane-gas",
+		setting_type = "startup",
+		hidden = bc_full_control,
+		default_value = bc_defaults.bc_petroleum_gas_from_methane_gas,--false,
+		order = "x[settings]-fc-i[recipe]-i[detailed-optional]-i[petroleum-gas-from-methane-gas]-b[enable]"
 	},
 	{
 		type = "int-setting",

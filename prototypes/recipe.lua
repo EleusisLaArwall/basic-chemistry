@@ -403,8 +403,8 @@ if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 			type = "recipe",
 			name = "bc-syn-gas-from-wood",
 			icons = {
-				{icon="__base__/graphics/icons/wood.png", shift={-12, -12}, scale=0.4},
-				{icon="__basic-chemistry__/graphics/icons/syn-gas.png", draw_background=true}
+				{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.375, shift={4,4}},
+				{icon="__base__/graphics/icons/wood.png", scale=0.3125, shift={-6,-6}, draw_background=true}
 			},
 			categories = {"chemistry"},
 			subgroup = "fluid-recipes",

@@ -40,7 +40,7 @@ if mods["space-age"] then
 				type = "recipe",
 				name = "bc-syn-gas-high-temp",
 				icons = {
-					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", scale=0.375, shift={4,4}},
+					{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.375, shift={4,4}},
 					{icon="__base__/graphics/icons/fluid/steam.png", scale=0.3125, shift={-6,-6}, draw_background=true}
 				},
 				categories = {"chemistry", "cryogenics"},
@@ -49,7 +49,7 @@ if mods["space-age"] then
 				ingredients =
 				{
 					{type="item", name="coal", amount=bc_settings.bc_fc_syn_gas_coal},
-					{type = "fluid", name = "steam", amount = 10, minimum_temperature = 500}
+					{type = "fluid", name = "steam", amount = bc_settings.bc_fc_syn_gas_water, minimum_temperature = 500}
 				},
 				results =
 				{
@@ -72,7 +72,7 @@ if mods["space-age"] then
 				type = "recipe",
 				name = "bc-syn-gas-from-spoilage",
 				icons = {
-					{icon="__basic-chemistry__/graphics/icons/syn-gas.png", scale=0.375, shift={4,4}},
+					{icon="__basic-chemistry__/graphics/icons/syn-gas-" .. bc_settings.bc_syn_gas_icon .. ".png", scale=0.375, shift={4,4}},
 					{icon="__space-age__/graphics/icons/spoilage.png", scale=0.3125, shift={-6,-6}, draw_background=true}
 				},
 				-- category = "organic-or-chemistry",

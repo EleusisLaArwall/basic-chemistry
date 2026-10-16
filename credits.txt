@@ -6,6 +6,9 @@ This file specifies assets used in Basic Chemistry from other sources.
 
 Entity, icon and animation for:
 - chemical reactor
+- extractor pump
+- syngas (cloud icons)
+- methane gas (cloud icons)
 - natural gas
 - petroleum gas
 - advanced oil processing
