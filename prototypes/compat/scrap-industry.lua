@@ -34,7 +34,7 @@ if bc_settings.bc_si_synthetic_scrap then
 			name = "bc-synthetic-plate-from-scrap",
 			icons = {
 				{icon="__basic-chemistry__/graphics/icons/synthetic-scrap.png", shift={-12, -12}, scale=0.4},
-				{icon="__basic-chemistry__/graphics/icons/synthetic-plate.png", draw_background=true}
+				{icon="__basic-chemistry__/graphics/icons/synthetic-" .. bc_settings.bc_synthetic_plate_icon .. ".png", draw_background=true}
 			},
 --			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 			categories = {"chemistry"},
