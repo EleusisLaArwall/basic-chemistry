@@ -16,7 +16,11 @@ if bc_settings.bc_aai_remove_stone_tablet then
 	data.raw.recipe["stone-tablet"].hidden = true
 	data.raw.item["stone-tablet"].hidden = true
 -- replace stone-tablet with iron-plate for electronic-circuit (provided by aai-industry)
-	util.replace_or_add_ingredient_sub(data.raw.recipe["electronic-circuit"], "stone-tablet", "iron-plate", 1)
+	if bc_settings.bc_electronic_circuit_ing_iron_plate_remove then
+		util.remove_ingredient_sub(data.raw.recipe["electronic-circuit"], "stone-tablet")
+	else
+		util.replace_or_add_ingredient_sub(data.raw.recipe["electronic-circuit"], "stone-tablet", "iron-plate", 1)
+	end
 -- revert the amount of stone on the map back to default (increased by aai-industry; 10, 1.1, 1.5)
 	data.raw.resource.stone.autoplace = resource_autoplace.resource_autoplace_settings{
 		name = "stone",
