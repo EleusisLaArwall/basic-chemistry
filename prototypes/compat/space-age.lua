@@ -20,7 +20,7 @@ if mods["space-age"] then
 	if bc_settings.bc_fc_syn_gas_from_wood > 0 then
 		table.insert(data.raw.recipe["bc-syn-gas-from-wood"].categories, "cryogenics")
 	end
-	if mods["scrap-industry"] then
+	if mods["scrap-industry"] and bc_settings.bc_si_synthetic_scrap then
 		table.insert(data.raw.recipe["bc-synthetic-plate-from-scrap"].categories, "cryogenics")
 	end
 	-- FULGORA
