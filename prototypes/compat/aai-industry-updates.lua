@@ -1,5 +1,8 @@
 local util = require("__aai-industry__.data-util")
 
+-- Basic Chemistry Mod Settings
+local bc_settings = require ("bc-settings")
+
 util.tech_lock_recipes(
 	"burner-mechanics", {
 		"pipe",
