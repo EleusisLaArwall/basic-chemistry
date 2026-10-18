@@ -39,4 +39,7 @@ extractor_pump_item.name = "bc-extractor-pump"
 extractor_pump_item.icon = "__basic-chemistry__/graphics/icons/extractor-pump.png"
 extractor_pump_item.order = "b[fluids]-b[extractor-pump]"
 extractor_pump_item.place_result = "bc-extractor-pump"
+if not bc_settings.bc_extractor_pump then
+	extractor_pump_item.hidden_in_factoriopedia = true
+end
 data:extend({ extractor_pump_item })

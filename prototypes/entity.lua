@@ -2,6 +2,7 @@ require ("__base__.prototypes.entity.pipecovers")
 
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
+local bc_settings = require ("bc-settings")
 
 data:extend(
 {
@@ -278,6 +279,9 @@ extractor_pump.output_fluid_box.pipe_connections =
 		flow_direction = "output"
 	}
 }
+if not bc_settings.bc_extractor_pump then
+	extractor_pump.hidden = true
+end
 extractor_pump.migrate_horizontal_mirroring = false
 extractor_pump.use_mirroring = false
 extractor_pump.graphics_set =
